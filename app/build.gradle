@@ -9,6 +9,9 @@ dependencies {
 	implementation Dependencies.MATERIAL
 	implementation Dependencies.KOIN_CORE
 	implementation Dependencies.KOIN_ANDROID
+	implementation Dependencies.COMPOSE.NAVIGATION
+	implementation Dependencies.COMPOSE.ACTIVITY
+	implementation Dependencies.COMPOSE.MATERIAL
 
 	implementation project(":network")
 	implementation project(":database")
