@@ -1,0 +1,16 @@
+apply plugin: Plugins.ANDROID_LIBRARY
+apply plugin: Plugins.KOTLIN_ANDROID
+apply plugin: Plugins.KOTLIN_KAPT
+
+apply from: "$rootDir/build_system/androidLibrary.gradle"
+
+dependencies {
+
+	implementation Dependencies.ROOM_RUNTIME
+	kapt Dependencies.ROOM_COMPILER
+	kapt Dependencies.SQLITE
+
+	implementation Dependencies.KOIN_ANDROID
+
+	implementation project(":shared:lesson")
+}

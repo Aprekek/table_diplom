@@ -1,0 +1,18 @@
+ext.Versions = [
+	KOTLIN                   : "1.6.0",
+	GRADLE                   : '7.0.4',
+	CORE                     : "1.7.0",
+	APP_COMPAT               : "1.4.0",
+	ROOM                     : "2.4.0",
+	KOIN                     : "3.1.5",
+	RETROFIT                 : "2.9.0",
+	OKHTTP                   : "4.9.0",
+	GSON                     : "2.9.0",
+	SQLITE                   : "3.36.0.3",
+	MATERIAL                 : "1.5.0-rc01",
+	MOSHI                    : "1.13.0",
+	COMPOSE_ACTIVITY         : "1.4.0",
+	COMPOSE_COMMON           : "1.1.0-rc01",
+	COMPOSE_CONSTRAINT_LAYOUT: "1.0.0-rc02",
+	COMPOSE_VIEWMODEL        : "2.4.0",
+]
