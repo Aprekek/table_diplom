@@ -14,14 +14,14 @@ import java.net.HttpURLConnection.HTTP_OK
 
 internal fun getFake(context: Context, uri: Uri, response: Response.Builder): Response.Builder =
 	when (uri.path) {
-		"insert/your/request/here"               -> {
+		"insert/your/request/here" -> {
 			response.createResponse(
 				description = context.readFileFromAssets(TestJsonAsset.testAsset),
 				body = context.readFileFromAssets(TestJsonAsset.testAsset)
 			)
 		}
 
-		else                                     -> {
+		else                       -> {
 			error404(response)
 		}
 	}
@@ -32,7 +32,7 @@ internal fun postFake(
 	chain: Interceptor.Chain
 ): Response.Builder =
 	when (uri.path) {
-		"insert/your/request/here"             -> {
+		"insert/your/request/here" -> {
 			logBody(chain)
 			response.createResponse(
 				code = HTTP_OK,
@@ -41,7 +41,7 @@ internal fun postFake(
 			)
 		}
 
-		else                                   -> {
+		else                       -> {
 			error404(response)
 		}
 	}
