@@ -7,6 +7,7 @@ import org.koin.core.context.startKoin
 import org.koin.core.logger.Level.ERROR
 import ru.sibsutis.network.di.networkModule
 import ru.sibsutis.table.database.di.databaseModule
+import ru.sibsutis.table.feature.groupmenu.di.groupMenuModule
 
 class App : Application() {
 
@@ -19,6 +20,7 @@ class App : Application() {
 			modules(
 				networkModule,
 				databaseModule,
+				groupMenuModule,
 			)
 		}
 	}
