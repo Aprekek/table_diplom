@@ -1,20 +1,22 @@
-apply plugin: Plugins.ANDROID_APPLICATION
+apply plugin: Plugins.ANDROID_LIBRARY
 apply plugin: Plugins.KOTLIN_ANDROID
 
-apply from: "$rootDir/build_system/androidApplication.gradle"
+apply from: "$rootDir/build_system/androidLibrary.gradle"
+
 dependencies {
+
 	implementation Dependencies.KOTLIN_STANDARD_LIBRARY
 	implementation Dependencies.CORE
 	implementation Dependencies.APP_COMPAT
 	implementation Dependencies.MATERIAL
 	implementation Dependencies.KOIN_CORE
 	implementation Dependencies.KOIN_ANDROID
-	implementation Dependencies.COMPOSE.NAVIGATION
-	implementation Dependencies.COMPOSE.ACTIVITY
 	implementation Dependencies.COMPOSE.MATERIAL
 
-	implementation project(":network")
+	implementation Dependencies.MOSHI
+	implementation Dependencies.RETROFIT
+
 	implementation project(":database")
-	implementation project(":shared:lesson")
-	implementation project(":feature:groupmenu")
+	implementation project(":mockapiserver")
+	implementation project(":network")
 }
