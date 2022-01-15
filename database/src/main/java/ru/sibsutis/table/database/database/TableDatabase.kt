@@ -5,6 +5,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import ru.sibsutis.table.database.converters.LessonTypeConverter
 import ru.sibsutis.table.database.converters.WeekTypeConverter
+import ru.sibsutis.table.database.dao.GroupDao
 import ru.sibsutis.table.database.entities.GroupEntity
 import ru.sibsutis.table.database.entities.LessonEntity
 import ru.sibsutis.table.database.entities.TeacherEntity
@@ -28,4 +29,6 @@ abstract class TableDatabase : RoomDatabase() {
 
 		const val DATABASE_NAME = "table_database"
 	}
+
+	abstract fun groupDao(): GroupDao
 }

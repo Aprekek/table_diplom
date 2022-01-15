@@ -16,4 +16,6 @@ val databaseModule = module {
 			.fallbackToDestructiveMigration()
 			.build()
 	}
+
+	factory { get<TableDatabase>().groupDao() }
 }
