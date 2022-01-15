@@ -3,14 +3,14 @@ package ru.sibsutis.mockapiserver.assets
 import android.content.Context
 import android.net.Uri
 import android.util.Log
+import java.io.InputStreamReader
+import java.net.HttpURLConnection.HTTP_NOT_FOUND
+import java.net.HttpURLConnection.HTTP_OK
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.Response
 import okhttp3.ResponseBody.Companion.toResponseBody
 import okio.Buffer
-import java.io.InputStreamReader
-import java.net.HttpURLConnection.HTTP_NOT_FOUND
-import java.net.HttpURLConnection.HTTP_OK
 
 internal fun getFake(context: Context, uri: Uri, response: Response.Builder): Response.Builder =
 	when (uri.path) {
@@ -18,6 +18,13 @@ internal fun getFake(context: Context, uri: Uri, response: Response.Builder): Re
 			response.createResponse(
 				description = context.readFileFromAssets(TestJsonAsset.testAsset),
 				body = context.readFileFromAssets(TestJsonAsset.testAsset)
+			)
+		}
+
+		"groups_list"              -> {
+			response.createResponse(
+				description = context.readFileFromAssets(GroupJsonAsset.groupAsset),
+				body = context.readFileFromAssets(GroupJsonAsset.groupAsset)
 			)
 		}
 
