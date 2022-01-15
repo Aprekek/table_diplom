@@ -29,6 +29,7 @@ ext.Dependencies = [
 		ACTIVITY         : "androidx.activity:activity-compose:${Versions.COMPOSE_ACTIVITY}",
 		MATERIAL         : "androidx.compose.material:material:${Versions.COMPOSE_COMMON}",
 		CONSTRAINT_LAYOUT: "androidx.constraintlayout:constraintlayout-compose:${Versions.COMPOSE_CONSTRAINT_LAYOUT}",
+		KOIN             : "io.insert-koin:koin-androidx-compose:${Versions.KOIN}",
 		ANIMATIONS       : "androidx.compose.animation:animation:${Versions.COMPOSE_COMMON}",
 		TOOLING          : "androidx.compose.ui:ui-tooling:${Versions.COMPOSE_COMMON}",
 		VIEWMODEL        : "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.COMPOSE_VIEWMODEL}",
