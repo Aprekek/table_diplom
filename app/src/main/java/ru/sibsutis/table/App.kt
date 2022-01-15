@@ -9,6 +9,7 @@ import ru.sibsutis.network.di.networkModule
 import ru.sibsutis.table.database.di.databaseModule
 import ru.sibsutis.table.di.appModule
 import ru.sibsutis.table.preferences.di.preferencesModule
+import ru.sibsutis.table.feature.groupmenu.di.groupMenuModule
 
 class App : Application() {
 
@@ -23,6 +24,7 @@ class App : Application() {
 				networkModule,
 				databaseModule,
 				preferencesModule,
+				groupMenuModule,
 			)
 		}
 	}
