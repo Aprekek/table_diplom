@@ -1,0 +1,9 @@
+apply plugin: Plugins.ANDROID_LIBRARY
+apply plugin: Plugins.KOTLIN_ANDROID
+
+dependencies {
+
+	implementation Dependencies.KOTLIN_STANDARD_LIBRARY
+	implementation Dependencies.CORE
+	implementation Dependencies.COMPOSE.MATERIAL
+}
