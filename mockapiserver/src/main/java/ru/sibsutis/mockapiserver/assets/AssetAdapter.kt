@@ -21,7 +21,7 @@ internal fun getFake(context: Context, uri: Uri, response: Response.Builder): Re
 			)
 		}
 
-		"groups_list"              -> {
+		"/groups_list"              -> {
 			response.createResponse(
 				description = context.readFileFromAssets(GroupJsonAsset.groupAsset),
 				body = context.readFileFromAssets(GroupJsonAsset.groupAsset)
