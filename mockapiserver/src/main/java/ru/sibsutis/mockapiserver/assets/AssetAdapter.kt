@@ -21,10 +21,17 @@ internal fun getFake(context: Context, uri: Uri, response: Response.Builder): Re
 			)
 		}
 
-		"/groups_list"              -> {
+		"/groups_list"             -> {
 			response.createResponse(
 				description = context.readFileFromAssets(GroupJsonAsset.groupAsset),
 				body = context.readFileFromAssets(GroupJsonAsset.groupAsset)
+			)
+		}
+
+		"/teachers_list"           -> {
+			response.createResponse(
+				description = context.readFileFromAssets(TeachersJsonAsset.teachersAsset),
+				body = context.readFileFromAssets(TeachersJsonAsset.teachersAsset)
 			)
 		}
 
@@ -53,7 +60,11 @@ internal fun postFake(
 		}
 	}
 
-internal fun Response.Builder.createResponse(code: Int = HTTP_OK, description: String, body: String? = null) =
+internal fun Response.Builder.createResponse(
+	code: Int = HTTP_OK,
+	description: String,
+	body: String? = null
+) =
 	this.code(code)
 		.message(description)
 		.apply {
