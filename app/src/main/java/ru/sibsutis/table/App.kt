@@ -7,6 +7,7 @@ import org.koin.core.context.startKoin
 import org.koin.core.logger.Level.ERROR
 import ru.sibsutis.network.di.networkModule
 import ru.sibsutis.table.database.di.databaseModule
+import ru.sibsutis.table.di.appModule
 import ru.sibsutis.table.preferences.di.preferencesModule
 
 class App : Application() {
@@ -18,6 +19,7 @@ class App : Application() {
 			androidContext(this@App)
 
 			modules(
+				appModule,
 				networkModule,
 				databaseModule,
 				preferencesModule,
