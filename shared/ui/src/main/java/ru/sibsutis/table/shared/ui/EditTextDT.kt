@@ -2,64 +2,60 @@ package ru.sibsutis.table.shared.ui
 
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.DropdownMenuItem
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ExposedDropdownMenuBox
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 
 @ExperimentalMaterialApi
 @Composable
 fun EditTextDT(
-	text: String,
+	expanded: Boolean,
+	textFieldValue: TextFieldValue,
+	labelText: String,
 	onValueChange: (value: String) -> Unit,
+	onDismissRequest: () -> Unit,
 	suggestions: List<String>,
 	onSuggestionItemClick: (item: String) -> Unit
 ) {
-
-	var expanded by rememberSaveable { mutableStateOf(false) }
-
 	ExposedDropdownMenuBox(
-		expanded = text.isNotBlank(),
+		expanded = textFieldValue.text.isNotBlank(),
 		onExpandedChange = {}
 	) {
 		OutlinedTextField(
-			value = text,
+			value = textFieldValue,
+			label = { Text(text = labelText) },
 			onValueChange = {
-				onValueChange(it)
-				expanded = it.isNotBlank()
+				onValueChange(it.text)
 			},
-			modifier = Modifier.fillMaxWidth()
+			modifier = Modifier.fillMaxWidth(),
+			keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done)
 		)
 
-		ExposedDropdownMenu(
-			expanded = expanded,
-			onDismissRequest = { expanded = false },
-			modifier = Modifier.defaultMinSize(minHeight = 48.dp)
-		) {
-			suggestions.forEach { suggestionValue ->
-				DropdownMenuItem(
-					modifier = Modifier.fillMaxWidth(),
-					onClick = {
-						onSuggestionItemClick(suggestionValue)
-						expanded = false
+		if (suggestions.isNotEmpty() && expanded) {
+			ExposedDropdownMenu(
+				expanded = expanded,
+				onDismissRequest = { onDismissRequest() },
+				modifier = Modifier.defaultMinSize(minHeight = 48.dp)
+			) {
+				suggestions.forEach { suggestionValue ->
+					DropdownMenuItem(
+						modifier = Modifier.fillMaxWidth(),
+						onClick = {
+							onSuggestionItemClick(suggestionValue)
+						}
+					) {
+						Text(text = suggestionValue)
 					}
-				) {
-					Text(text = suggestionValue)
 				}
 			}
 		}
-	}
-
-	DisposableEffect(Unit) {
-		onDispose { expanded = false }
 	}
 }

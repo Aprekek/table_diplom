@@ -11,7 +11,7 @@ import androidx.compose.ui.res.painterResource
 fun ToolbarDT(
 	title: String,
 	enableBackButton: Boolean = true,
-	onBackButtonClick: () -> Unit
+	onBackButtonClick: () -> Unit = {}
 ) {
 	TopAppBar(
 		title = { Text(text = title) },

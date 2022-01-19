@@ -15,7 +15,6 @@ fun ButtonDT(
 
 	Button(
 		onClick = onClick,
-		modifier = Modifier.padding(horizontal = 25.dp, vertical = 10.dp)
 	) {
 		Text(text = title)
 	}
