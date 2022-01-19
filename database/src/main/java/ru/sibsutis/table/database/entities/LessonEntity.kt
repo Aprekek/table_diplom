@@ -13,8 +13,7 @@ data class LessonEntity(
 	@PrimaryKey(autoGenerate = true)
 	val id: Long = 0,
 	val name: String,
-	@ColumnInfo(index = true)
-	val group: String,
+	val day: String,
 	val startTime: String,
 	val endTime: String,
 	@ColumnInfo(index = true)

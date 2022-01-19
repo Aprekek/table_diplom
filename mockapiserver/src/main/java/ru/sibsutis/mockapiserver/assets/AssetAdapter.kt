@@ -21,10 +21,45 @@ internal fun getFake(context: Context, uri: Uri, response: Response.Builder): Re
 			)
 		}
 
-		"/groups_list"              -> {
+		"/groups_list"             -> {
 			response.createResponse(
 				description = context.readFileFromAssets(GroupJsonAsset.groupAsset),
 				body = context.readFileFromAssets(GroupJsonAsset.groupAsset)
+			)
+		}
+
+		"/teachers_list"           -> {
+			response.createResponse(
+				description = context.readFileFromAssets(TeachersJsonAsset.teachersAsset),
+				body = context.readFileFromAssets(TeachersJsonAsset.teachersAsset)
+			)
+		}
+
+		"/lessons/ис-841"          -> {
+			response.createResponse(
+				description = context.readFileFromAssets(LessonsJsonAsset.is841Asset),
+				body = context.readFileFromAssets(LessonsJsonAsset.is841Asset)
+			)
+		}
+
+		"/lessons/ив-821"          -> {
+			response.createResponse(
+				description = context.readFileFromAssets(LessonsJsonAsset.iv821Asset),
+				body = context.readFileFromAssets(LessonsJsonAsset.iv821Asset)
+			)
+		}
+
+		"/lessons/ив-822"          -> {
+			response.createResponse(
+				description = context.readFileFromAssets(LessonsJsonAsset.iv822Asset),
+				body = context.readFileFromAssets(LessonsJsonAsset.iv822Asset)
+			)
+		}
+
+		"/lessons/ив-823"          -> {
+			response.createResponse(
+				description = context.readFileFromAssets(LessonsJsonAsset.iv823Asset),
+				body = context.readFileFromAssets(LessonsJsonAsset.iv823Asset)
 			)
 		}
 
@@ -53,7 +88,11 @@ internal fun postFake(
 		}
 	}
 
-internal fun Response.Builder.createResponse(code: Int = HTTP_OK, description: String, body: String? = null) =
+internal fun Response.Builder.createResponse(
+	code: Int = HTTP_OK,
+	description: String,
+	body: String? = null
+) =
 	this.code(code)
 		.message(description)
 		.apply {

@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Абрамова Евгения Сергеевна",
+    "phone": "+7(383) 269-82-65",
+    "email": "evgenka_252@mail.ru",
+    "address": "1 корпус",
+    "cathedra": "Кафедра радиотехнических устройств и техносферной безопасности",
+    "photo": "https://i.pinimg.com/originals/47/ae/fd/47aefdee3a87b3f6e86ea394d89ac8dc.jpg"
+  },
+  {
+    "name": "Конин Максим Васильевич",
+    "phone": "+79991231212",
+    "email": "maxim21214@gmail.com",
+    "address": "Корпус 1",
+    "cathedra": "Кафедра вычислительных систем",
+    "photo": "https://i.pinimg.com/originals/47/ae/fd/47aefdee3a87b3f6e86ea394d89ac8dc.jpg"
+  },
+  {
+    "name": "Крамаренко Константин Евгеньевич",
+    "phone": "+79991231212",
+    "email": "kostya_83@ngs.ru",
+    "address": "Корпус 1",
+    "cathedra": "Кафедра вычислительных систем",
+    "photo": "https://i.pinimg.com/originals/47/ae/fd/47aefdee3a87b3f6e86ea394d89ac8dc.jpg"
+  },
+  {
+    "name": "Крюкова Лидия Павловна",
+    "phone": "+79991231212",
+    "email": "Lidakrukova1994@gmail.com",
+    "address": "Корпус 1",
+    "cathedra": "Кафедра вычислительных систем",
+    "photo": "https://i.pinimg.com/originals/47/ae/fd/47aefdee3a87b3f6e86ea394d89ac8dc.jpg"
+  },
+  {
+    "name": "Латкин Василий Иванович",
+    "phone": "+79991231212",
+    "email": "vilatkin@gmail.com",
+    "address": "Корпус 1",
+    "cathedra": "Кафедра высшей математики",
+    "photo": "https://i.pinimg.com/originals/47/ae/fd/47aefdee3a87b3f6e86ea394d89ac8dc.jpg"
+  },
+  {
+    "name": "Мейкшан Владимир Иванович",
+    "phone": "+79991231212",
+    "email": "MeikshanVI@gmail.com",
+    "address": "Корпус 2",
+    "cathedra": "Кафедра телекоммуникационных систем и вычислительных средств",
+    "photo": "https://i.pinimg.com/originals/47/ae/fd/47aefdee3a87b3f6e86ea394d89ac8dc.jpg"
+  },
+  {
+    "name": "Пименов Евгений Сергеевич",
+    "phone": "+79991231212",
+    "email": "es.pimenov@ya.ru",
+    "address": "Корпус 1",
+    "cathedra": "Кафедра вычислительных систем",
+    "photo": "https://i.pinimg.com/originals/47/ae/fd/47aefdee3a87b3f6e86ea394d89ac8dc.jpg"
+  },
+  {
+    "name": "Ракитский Антон Андреевич",
+    "phone": "+79991231212",
+    "email": "rakitsky.anton@gmail.com",
+    "address": "Корпус 1 ауд.430а",
+    "cathedra": "Кафедра прикладной математики и кибернетики",
+    "photo": "https://i.pinimg.com/originals/47/ae/fd/47aefdee3a87b3f6e86ea394d89ac8dc.jpg"
+  },
+  {
+    "name": "Храмова Татьяна Викторовна",
+    "phone": "+79991231212",
+    "email": "tvkhramova@sibguti.ru",
+    "address": "Корпус 5 ауд.437",
+    "cathedra": "Кафедра высшей математики",
+    "photo": "https://i.pinimg.com/originals/47/ae/fd/47aefdee3a87b3f6e86ea394d89ac8dc.jpg"
+  },
+  {
+    "name": "Храмова Антонина Павловна",
+    "phone": "+79991231212",
+    "email": "akhramova@sibguti.ru",
+    "address": "Корпус 5 ауд.437",
+    "cathedra": "Кафедра высшей математики",
+    "photo": "https://i.pinimg.com/originals/47/ae/fd/47aefdee3a87b3f6e86ea394d89ac8dc.jpg"
+  }
+]
