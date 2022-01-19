@@ -16,4 +16,5 @@ ext.Versions = [
 	COMPOSE_CONSTRAINT_LAYOUT: "1.0.0-rc02",
 	COMPOSE_VIEWMODEL        : "2.4.0",
 	COMPOSE_NAVIGATION       : "2.4.0-rc01",
+	GLIDE                    : "4.12.0"
 ]
