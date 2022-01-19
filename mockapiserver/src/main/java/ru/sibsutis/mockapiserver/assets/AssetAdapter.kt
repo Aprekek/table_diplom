@@ -35,6 +35,34 @@ internal fun getFake(context: Context, uri: Uri, response: Response.Builder): Re
 			)
 		}
 
+		"/lessons/ис-841"          -> {
+			response.createResponse(
+				description = context.readFileFromAssets(LessonsJsonAsset.is841Asset),
+				body = context.readFileFromAssets(LessonsJsonAsset.is841Asset)
+			)
+		}
+
+		"/lessons/ив-821"          -> {
+			response.createResponse(
+				description = context.readFileFromAssets(LessonsJsonAsset.iv821Asset),
+				body = context.readFileFromAssets(LessonsJsonAsset.iv821Asset)
+			)
+		}
+
+		"/lessons/ив-822"          -> {
+			response.createResponse(
+				description = context.readFileFromAssets(LessonsJsonAsset.iv822Asset),
+				body = context.readFileFromAssets(LessonsJsonAsset.iv822Asset)
+			)
+		}
+
+		"/lessons/ив-823"          -> {
+			response.createResponse(
+				description = context.readFileFromAssets(LessonsJsonAsset.iv823Asset),
+				body = context.readFileFromAssets(LessonsJsonAsset.iv823Asset)
+			)
+		}
+
 		else                       -> {
 			error404(response)
 		}
