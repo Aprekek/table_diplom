@@ -17,4 +17,5 @@ dependencies {
 	implementation project(":database")
 	implementation project(":shared:lesson")
 	implementation project(":shared:ui")
+	implementation project(":shared:preferences")
 }
