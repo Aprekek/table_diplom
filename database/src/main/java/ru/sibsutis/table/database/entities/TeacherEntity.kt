@@ -13,5 +13,6 @@ data class TeacherEntity(
 	val phone: String,
 	val email: String,
 	val address: String,
-	val cathedra: String
+	val cathedra: String,
+	val photo: String
 )
