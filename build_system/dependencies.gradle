@@ -34,4 +34,6 @@ ext.Dependencies = [
 		VIEWMODEL        : "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.COMPOSE_VIEWMODEL}",
 		NAVIGATION       : "androidx.navigation:navigation-compose:${Versions.COMPOSE_NAVIGATION}"
 	],
+
+	GLIDE                  : "com.github.bumptech.glide:glide:${Versions.GLIDE}"
 ]
