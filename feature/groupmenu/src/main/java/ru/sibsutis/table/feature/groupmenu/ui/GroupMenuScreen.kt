@@ -25,6 +25,8 @@ import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.compose.composable
 import kotlinx.coroutines.FlowPreview
 import org.koin.androidx.compose.viewModel
 import org.koin.core.parameter.parametersOf
@@ -40,12 +42,22 @@ import ru.sibsutis.table.shared.ui.ToolbarDT
 
 object GroupMenuScreen {
 
-	const val ROUTE = "group_menu"
+	private const val PATH = "group_menu"
+
+	fun path() = PATH
+
+	@FlowPreview
+	@ExperimentalMaterialApi
+	fun route(navBuilder: NavGraphBuilder, navController: NavController) {
+		navBuilder.composable(PATH) {
+			Content(navController = navController)
+		}
+	}
 
 	@FlowPreview
 	@ExperimentalMaterialApi
 	@Composable
-	fun Content(navController: NavController) {
+	private fun Content(navController: NavController) {
 		val context = LocalContext.current
 
 		val viewModel by viewModel<StarterScreenViewModel>()

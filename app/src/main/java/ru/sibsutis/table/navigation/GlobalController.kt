@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.FlowPreview
-import ru.sibsutis.table.feature.groupmenu.groupMenuRoute
+import ru.sibsutis.table.feature.groupmenu.ui.GroupMenuScreen
 
 @FlowPreview
 @ExperimentalMaterialApi
@@ -17,6 +17,6 @@ fun GlobalController(startDestination: String) {
 		navController = navController,
 		startDestination = startDestination
 	) {
-		groupMenuRoute(this, navController)
+		GroupMenuScreen.route(this, navController)
 	}
 }
