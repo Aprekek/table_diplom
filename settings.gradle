@@ -1,9 +1,9 @@
 rootProject.name = "table"
 include ':app'
 include ':network'
-include ':mockapiserver'
+include ':mockApiServer'
 include ':database'
 include ':shared:lesson'
 include ':shared:ui'
 include ':shared:preferences'
-include ':feature:groupmenu'
+include ':feature:groupMenu'
