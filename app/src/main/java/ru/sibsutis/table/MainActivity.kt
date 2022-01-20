@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 
 		setContent {
-			GlobalController(startDestination = GroupMenuScreen.ROUTE)
+			GlobalController(startDestination = GroupMenuScreen.path())
 		}
 	}
 }
