@@ -1,0 +1,14 @@
+apply plugin: Plugins.ANDROID_LIBRARY
+apply plugin: Plugins.KOTLIN_ANDROID
+
+apply from: "$rootDir/build_system/androidLibrary.gradle"
+
+dependencies {
+
+	implementation Dependencies.KOIN_CORE
+	implementation Dependencies.COMPOSE.MATERIAL
+	implementation Dependencies.COMPOSE.NAVIGATION
+
+	implementation project(":navigation")
+	implementation project(":shared:ui")
+}
