@@ -20,7 +20,7 @@ dependencies {
 	implementation Dependencies.RETROFIT
 
 	implementation project(":database")
-	implementation project(":mockapiserver")
+	implementation project(':mockApiServer')
 	implementation project(":network")
 	implementation project(":shared:ui")
 	implementation project(":shared:preferences")

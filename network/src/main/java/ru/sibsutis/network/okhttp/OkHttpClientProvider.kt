@@ -1,8 +1,8 @@
 package ru.sibsutis.network.okhttp
 
+import java.util.concurrent.TimeUnit
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import java.util.concurrent.TimeUnit
 
 private const val TIMEOUT: Long = 60
 
