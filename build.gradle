@@ -17,6 +17,15 @@ allprojects {
 		mavenCentral()
 		google()
 	}
+
+	tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+		kotlinOptions {
+			freeCompilerArgs += "-Xopt-in=androidx.compose.material.ExperimentalMaterialApi"
+			freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+			freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
+			freeCompilerArgs += "-Xopt-in=kotlin.Experimental"
+		}
+	}
 }
 
 task clean(type: Delete) {
