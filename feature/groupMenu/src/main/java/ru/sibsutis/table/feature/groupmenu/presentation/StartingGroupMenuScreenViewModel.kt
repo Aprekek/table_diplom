@@ -13,27 +13,27 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import ru.sibsutis.table.feature.groupmenu.GroupMenuRouter
 import ru.sibsutis.table.feature.groupmenu.domain.entities.Group
 import ru.sibsutis.table.feature.groupmenu.domain.usecases.GetGroupsListUseCase
 import ru.sibsutis.table.feature.groupmenu.domain.usecases.IsGroupExistUseCase
 import ru.sibsutis.table.feature.groupmenu.domain.usecases.UpdateCurrentGroupInPreferencesUseCase
 import ru.sibsutis.table.feature.groupmenu.domain.usecases.UpdateLocalGroupStorageUseCase
+import ru.sibsutis.table.navigation.screens.startinggroupmenu.StartingGroupMenuRouter
 
-class StarterScreenViewModel(
+class StartingGroupMenuScreenViewModel(
 	private val getGroupsListUseCase: GetGroupsListUseCase,
 	private val updateLocalGroupStorageUseCase: UpdateLocalGroupStorageUseCase,
 	private val isGroupExistUseCase: IsGroupExistUseCase,
 	private val updateCurrentGroupInPreferencesUseCase: UpdateCurrentGroupInPreferencesUseCase
 ) : ViewModel() {
 
-	private lateinit var router: GroupMenuRouter
+	private lateinit var router: StartingGroupMenuRouter
 
 	private val debounceTime = 200L
 	private var localStorageGroupsChangesJob: Job? = null
 
 	private var _state =
-		MutableStateFlow<StarterScreenState>(StarterScreenState.NoError(isSuggestionsExpanded = true))
+		MutableStateFlow<StartingGroupMenuScreenState>(StartingGroupMenuScreenState.NoError(isSuggestionsExpanded = true))
 	val state = _state.asStateFlow()
 
 	private var onSuggestionItemPerform = false
@@ -53,7 +53,7 @@ class StarterScreenViewModel(
 		extractCashedGroupsFromDB()
 	}
 
-	fun setRouter(router: GroupMenuRouter) {
+	fun setRouter(router: StartingGroupMenuRouter) {
 		this.router = router
 	}
 
@@ -71,7 +71,7 @@ class StarterScreenViewModel(
 	}
 
 	fun noGroupErrorWasShown() {
-		_state.value = StarterScreenState.NoError(_state.value.isSuggestionsExpanded)
+		_state.value = StartingGroupMenuScreenState.NoError(_state.value.isSuggestionsExpanded)
 	}
 
 	fun onDismissAction() {
@@ -79,18 +79,18 @@ class StarterScreenViewModel(
 	}
 
 	fun onSubmitGroupAction() {
-		_state.value = StarterScreenState.Loading()
+		_state.value = StartingGroupMenuScreenState.Loading()
 		checkIsGroupExists()
 	}
 
 	private fun checkIsGroupExists() {
 		viewModelScope.launch {
 			if (!isGroupExistUseCase(_selectedGroup.value))
-				_state.value = StarterScreenState.NoGroupError(_state.value.isSuggestionsExpanded)
+				_state.value = StartingGroupMenuScreenState.NoGroupError(_state.value.isSuggestionsExpanded)
 			else {
 				updateCurrentGroupInPreferencesUseCase(_selectedGroup.value)
 				withContext(Dispatchers.Main) {
-					router.navigateToTimeTable(_selectedGroup.value)
+					router.navigateToMainBottomNavScreen(_selectedGroup.value)
 				}
 			}
 		}

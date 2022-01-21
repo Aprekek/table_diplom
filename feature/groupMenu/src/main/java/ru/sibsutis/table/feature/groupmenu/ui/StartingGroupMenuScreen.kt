@@ -29,23 +29,22 @@ import androidx.navigation.compose.composable
 import org.koin.androidx.compose.viewModel
 import org.koin.core.parameter.parametersOf
 import org.koin.java.KoinJavaComponent.get
-import ru.sibsutis.table.feature.groupmenu.GroupMenuRouter
 import ru.sibsutis.table.feature.groupmenu.R
 import ru.sibsutis.table.feature.groupmenu.data.mapper.getNames
-import ru.sibsutis.table.feature.groupmenu.presentation.StarterScreenState
-import ru.sibsutis.table.feature.groupmenu.presentation.StarterScreenViewModel
+import ru.sibsutis.table.feature.groupmenu.presentation.StartingGroupMenuScreenState
+import ru.sibsutis.table.feature.groupmenu.presentation.StartingGroupMenuScreenViewModel
+import ru.sibsutis.table.navigation.screens.startinggroupmenu.StartingGroupMenuContent
+import ru.sibsutis.table.navigation.screens.startinggroupmenu.StartingGroupMenuRouter
 import ru.sibsutis.table.shared.ui.ButtonDT
 import ru.sibsutis.table.shared.ui.EditTextDT
 import ru.sibsutis.table.shared.ui.ToolbarDT
 
-object GroupMenuScreen {
+object StartingGroupMenuScreen : StartingGroupMenuContent {
 
-	private const val PATH = "group_menu"
+	override val path: String = "group_menu"
 
-	fun path() = PATH
-
-	fun route(navBuilder: NavGraphBuilder, navController: NavController) {
-		navBuilder.composable(PATH) {
+	override fun route(navBuilder: NavGraphBuilder, navController: NavController) {
+		navBuilder.composable(path) {
 			Content(navController = navController)
 		}
 	}
@@ -54,11 +53,14 @@ object GroupMenuScreen {
 	private fun Content(navController: NavController) {
 		val context = LocalContext.current
 
-		val viewModel by viewModel<StarterScreenViewModel>()
+		val viewModel by viewModel<StartingGroupMenuScreenViewModel>()
 
 		LaunchedEffect(navController) {
-			val router = get<GroupMenuRouter>(GroupMenuRouter::class.java) { parametersOf(navController) }
-			viewModel.setRouter(router)
+			viewModel.setRouter(
+				get<StartingGroupMenuRouter>(StartingGroupMenuRouter::class.java) {
+					parametersOf(navController)
+				}
+			)
 		}
 
 		val state by viewModel.state.collectAsState()
@@ -74,7 +76,7 @@ object GroupMenuScreen {
 			)
 		}
 
-		if (state is StarterScreenState.NoGroupError) {
+		if (state is StartingGroupMenuScreenState.NoGroupError) {
 			LaunchedEffect(true) {
 				viewModel.noGroupErrorWasShown()
 				Toast.makeText(context, context.getString(R.string.group_not_found), Toast.LENGTH_LONG).show()
@@ -98,7 +100,7 @@ object GroupMenuScreen {
 				horizontalAlignment = Alignment.CenterHorizontally
 			) {
 
-				if (state is StarterScreenState.Loading) {
+				if (state is StartingGroupMenuScreenState.Loading) {
 					CircularProgressIndicator()
 				} else {
 					EditTextDT(

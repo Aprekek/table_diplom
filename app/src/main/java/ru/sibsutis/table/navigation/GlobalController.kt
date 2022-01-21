@@ -3,7 +3,7 @@ package ru.sibsutis.table.navigation
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import ru.sibsutis.table.feature.groupmenu.ui.GroupMenuScreen
+import ru.sibsutis.table.feature.groupmenu.ui.StartingGroupMenuScreen
 
 @Composable
 fun GlobalController(startDestination: String) {
@@ -13,6 +13,6 @@ fun GlobalController(startDestination: String) {
 		navController = navController,
 		startDestination = startDestination
 	) {
-		GroupMenuScreen.route(this, navController)
+		StartingGroupMenuScreen.route(this, navController)
 	}
 }
