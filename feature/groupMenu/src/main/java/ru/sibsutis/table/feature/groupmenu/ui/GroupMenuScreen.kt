@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -27,7 +26,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import kotlinx.coroutines.FlowPreview
 import org.koin.androidx.compose.viewModel
 import org.koin.core.parameter.parametersOf
 import org.koin.java.KoinJavaComponent.get
@@ -46,16 +44,12 @@ object GroupMenuScreen {
 
 	fun path() = PATH
 
-	@FlowPreview
-	@ExperimentalMaterialApi
 	fun route(navBuilder: NavGraphBuilder, navController: NavController) {
 		navBuilder.composable(PATH) {
 			Content(navController = navController)
 		}
 	}
 
-	@FlowPreview
-	@ExperimentalMaterialApi
 	@Composable
 	private fun Content(navController: NavController) {
 		val context = LocalContext.current
