@@ -6,14 +6,21 @@ import ru.sibsutis.table.navigation.BaseNavInfo
 
 interface MainBottomNavigationContent {
 
+	class Arguments {
+		companion object {
+
+			const val GROUP_NAME = "groupName"
+		}
+	}
+
 	companion object : BaseNavInfo {
 
-		override val path = "main_navigation/{groupName}"
+		override val path = "main_navigation/{${Arguments.GROUP_NAME}}"
 
 		fun createPath(groupName: String): String {
 			return "main_navigation/${groupName}"
 		}
 	}
 
-	fun route(graphBuilder: NavGraphBuilder, navController: NavController)
+	fun route(graphBuilder: NavGraphBuilder, navController: NavController, groupName: String)
 }
