@@ -3,17 +3,37 @@ package ru.sibsutis.table
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import ru.sibsutis.table.feature.groupmenu.ui.StartingGroupMenuScreen
+import org.koin.android.ext.android.get
 import ru.sibsutis.table.navigation.GlobalController
+import ru.sibsutis.table.navigation.screens.mainbottomnavigation.MainBottomNavigationContent
 import ru.sibsutis.table.navigation.screens.startinggroupmenu.StartingGroupMenuContent
+import ru.sibsutis.table.preferences.preferences.GroupPreferences
 
 class MainActivity : AppCompatActivity() {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
+		val currentGroup = getSavedGroup()
+
 		setContent {
-			GlobalController(startDestination = StartingGroupMenuContent.path)
+			GlobalController(
+				startDestination = getStartDestination(currentGroup),
+				currentGroup = currentGroup
+			)
 		}
 	}
+
+	private fun getStartDestination(savedGroup: String): String {
+
+		val startingDestination = if (savedGroup.isBlank()) {
+			StartingGroupMenuContent.path
+		} else {
+			MainBottomNavigationContent.path
+		}
+
+		return startingDestination
+	}
+
+	private fun getSavedGroup() = get<GroupPreferences>().getGroup() ?: ""
 }
