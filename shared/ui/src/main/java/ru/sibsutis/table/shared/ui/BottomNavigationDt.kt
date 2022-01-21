@@ -10,7 +10,7 @@ import ru.sibsutis.table.shared.ui.domain.BottomNavigationItemEntity
 
 @Composable
 fun BottomNavigationDt(
-	selectedItemId: Int,
+	selectedItem: String,
 	items: List<BottomNavigationItemEntity>,
 	onItemClick: (BottomNavigationItemEntity) -> Unit
 ) {
@@ -18,7 +18,7 @@ fun BottomNavigationDt(
 	BottomNavigation {
 		items.forEach { item ->
 			BottomNavigationItem(
-				selected = selectedItemId == item.id,
+				selected = selectedItem == item.route,
 				onClick = { onItemClick(item) },
 				icon = { Icon(painter = painterResource(id = item.image), contentDescription = null) },
 				label = { Text(text = item.title) },
