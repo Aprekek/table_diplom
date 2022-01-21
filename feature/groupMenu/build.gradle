@@ -22,6 +22,7 @@ dependencies {
 	implementation project(":database")
 	implementation project(':mockApiServer')
 	implementation project(":network")
+	implementation project(":navigation")
 	implementation project(":shared:ui")
 	implementation project(":shared:preferences")
 }
