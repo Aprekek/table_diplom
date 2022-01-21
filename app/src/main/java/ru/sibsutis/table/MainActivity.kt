@@ -5,6 +5,7 @@ import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import ru.sibsutis.table.feature.groupmenu.ui.StartingGroupMenuScreen
 import ru.sibsutis.table.navigation.GlobalController
+import ru.sibsutis.table.navigation.screens.startinggroupmenu.StartingGroupMenuContent
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 
 		setContent {
-			GlobalController(startDestination = StartingGroupMenuScreen.path)
+			GlobalController(startDestination = StartingGroupMenuContent.path)
 		}
 	}
 }

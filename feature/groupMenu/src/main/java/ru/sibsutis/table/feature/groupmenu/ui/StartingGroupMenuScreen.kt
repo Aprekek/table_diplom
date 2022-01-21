@@ -41,10 +41,8 @@ import ru.sibsutis.table.shared.ui.ToolbarDT
 
 object StartingGroupMenuScreen : StartingGroupMenuContent {
 
-	override val path: String = "group_menu"
-
 	override fun route(navBuilder: NavGraphBuilder, navController: NavController) {
-		navBuilder.composable(path) {
+		navBuilder.composable(StartingGroupMenuContent.path) {
 			Content(navController = navController)
 		}
 	}
@@ -57,7 +55,7 @@ object StartingGroupMenuScreen : StartingGroupMenuContent {
 
 		LaunchedEffect(navController) {
 			viewModel.setRouter(
-				get<StartingGroupMenuRouter>(StartingGroupMenuRouter::class.java) {
+				get(StartingGroupMenuRouter::class.java) {
 					parametersOf(navController)
 				}
 			)
