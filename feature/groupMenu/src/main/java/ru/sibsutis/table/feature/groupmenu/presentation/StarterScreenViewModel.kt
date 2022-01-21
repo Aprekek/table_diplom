@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -21,7 +20,6 @@ import ru.sibsutis.table.feature.groupmenu.domain.usecases.IsGroupExistUseCase
 import ru.sibsutis.table.feature.groupmenu.domain.usecases.UpdateCurrentGroupInPreferencesUseCase
 import ru.sibsutis.table.feature.groupmenu.domain.usecases.UpdateLocalGroupStorageUseCase
 
-@FlowPreview
 class StarterScreenViewModel(
 	private val getGroupsListUseCase: GetGroupsListUseCase,
 	private val updateLocalGroupStorageUseCase: UpdateLocalGroupStorageUseCase,

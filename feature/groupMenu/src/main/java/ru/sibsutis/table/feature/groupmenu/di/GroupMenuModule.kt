@@ -1,7 +1,6 @@
 package ru.sibsutis.table.feature.groupmenu.di
 
 import androidx.navigation.NavController
-import kotlinx.coroutines.FlowPreview
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import ru.sibsutis.mockapiserver.changer.MOCK
@@ -19,7 +18,6 @@ import ru.sibsutis.table.feature.groupmenu.domain.usecases.UpdateCurrentGroupInP
 import ru.sibsutis.table.feature.groupmenu.domain.usecases.UpdateLocalGroupStorageUseCase
 import ru.sibsutis.table.feature.groupmenu.presentation.StarterScreenViewModel
 
-@FlowPreview
 val groupMenuModule = module {
 
 	factory { createRetrofitService<GroupsMenuApi>(getRetrofit(MOCK)) }
