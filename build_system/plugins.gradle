@@ -5,6 +5,7 @@ ext.Plugins = [
 	KOTLIN_ANDROID     : "kotlin-android",
 	KOTLIN_EXTENSIONS  : "kotlin-android-extensions",
 	KOTLIN_KAPT        : "kotlin-kapt",
+	KOTLIN_PARCELIZE   : "kotlin-parcelize",
 	KOTLIN             : "kotlin",
 	JAVA_LIBRARY       : "java-library",
 ]
