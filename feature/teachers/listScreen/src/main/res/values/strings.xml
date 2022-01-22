@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="teacher_title">Преподаватели</string>
+	<string name="reload">Повторить</string>
+	<string name="error">Произошла ошибка</string>
+</resources>
