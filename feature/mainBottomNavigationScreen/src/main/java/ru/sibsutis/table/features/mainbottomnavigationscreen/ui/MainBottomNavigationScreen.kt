@@ -2,11 +2,15 @@ package ru.sibsutis.table.features.mainbottomnavigationscreen.ui
 
 import android.app.Activity
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
@@ -18,6 +22,7 @@ import ru.sibsutis.table.navigation.screens.settings.SettingsContent
 import ru.sibsutis.table.navigation.screens.startinggroupmenu.StartingGroupMenuContent
 import ru.sibsutis.table.navigation.screens.teachers.TeachersContent
 import ru.sibsutis.table.navigation.screens.timetable.TimeTableContent
+import ru.sibsutis.table.settings.SettingsScreen
 import ru.sibsutis.table.shared.ui.BottomNavigationDt
 import ru.sibsutis.table.shared.ui.domain.BottomNavigationItemEntity
 
@@ -65,17 +70,24 @@ object MainBottomNavigationScreen : MainBottomNavigationContent {
 				)
 			}
 		) {
-			when (currentScreen) {
-				TimeTableContent.path -> {
-					// TODO
-				}
+			Box(
+				modifier = Modifier
+					.fillMaxSize()
+					.padding(bottom = it.calculateBottomPadding())
+			) {
 
-				TeachersContent.path  -> {
-					// TODO
-				}
+				when (currentScreen) {
+					TimeTableContent.path -> {
+						// TODO
+					}
 
-				SettingsContent.path  -> {
-					// TODO
+					TeachersContent.path  -> {
+						// TODO
+					}
+
+					SettingsContent.path  -> {
+						SettingsScreen.route(navController, group)()
+					}
 				}
 			}
 		}
