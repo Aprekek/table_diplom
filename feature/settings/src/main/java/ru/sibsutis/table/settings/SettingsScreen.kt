@@ -3,6 +3,7 @@ package ru.sibsutis.table.settings
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,6 +21,7 @@ import androidx.compose.material.RadioButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -124,8 +126,13 @@ object SettingsScreen : SettingsContent {
 
 		Column(modifier = modifier) {
 			Card(
-				modifier = Modifier.fillMaxWidth(),
-				onClick = onClick,
+				modifier = Modifier
+					.fillMaxWidth()
+					.clickable(
+						interactionSource = MutableInteractionSource(),
+						indication = rememberRipple(),
+						onClick = onClick
+					),
 				elevation = elevation,
 				shape = RectangleShape,
 			) {
