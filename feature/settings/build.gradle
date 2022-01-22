@@ -9,7 +9,6 @@ dependencies {
 	implementation Dependencies.COMPOSE.MATERIAL
 	implementation Dependencies.COMPOSE.NAVIGATION
 
-	implementation project(":feature:settings")
 	implementation project(":navigation")
 	implementation project(":shared:ui")
 }
