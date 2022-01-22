@@ -21,4 +21,5 @@ dependencies {
 	implementation project(":shared:preferences")
 	implementation project(':feature:groupMenu')
 	implementation project(':feature:mainBottomNavigationScreen')
+	implementation project(':feature:teachers:listScreen')
 }
