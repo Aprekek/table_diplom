@@ -16,6 +16,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import ru.sibsutis.table.features.mainbottomnavigationscreen.R
+import ru.sibsutis.table.features.teachers.listscreen.ui.TeachersListScreen
 import ru.sibsutis.table.navigation.navigator.BottomBarNavigator
 import ru.sibsutis.table.navigation.screens.mainbottomnavigation.MainBottomNavigationContent
 import ru.sibsutis.table.navigation.screens.settings.SettingsContent
@@ -82,7 +83,7 @@ object MainBottomNavigationScreen : MainBottomNavigationContent {
 					}
 
 					TeachersContent.path  -> {
-						// TODO
+						TeachersListScreen.route(navController)()
 					}
 
 					SettingsContent.path  -> {
