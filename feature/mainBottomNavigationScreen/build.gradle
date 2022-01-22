@@ -10,6 +10,7 @@ dependencies {
 	implementation Dependencies.COMPOSE.NAVIGATION
 
 	implementation project(":feature:settings")
+	implementation project(":feature:teachers:listScreen")
 	implementation project(":navigation")
 	implementation project(":shared:ui")
 }
