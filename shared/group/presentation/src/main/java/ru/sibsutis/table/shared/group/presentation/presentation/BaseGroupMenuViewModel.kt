@@ -13,7 +13,6 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import ru.sibsutis.table.navigation.screens.startinggroupmenu.StartingGroupMenuRouter
 import ru.sibsutis.table.shared.group.domain.entities.Group
 import ru.sibsutis.table.shared.group.domain.usecases.GetGroupsListUseCase
 import ru.sibsutis.table.shared.group.domain.usecases.IsGroupExistUseCase
@@ -26,8 +25,6 @@ abstract class BaseGroupMenuViewModel(
 	protected val isGroupExistUseCase: IsGroupExistUseCase,
 	protected val updateCurrentGroupInPreferencesUseCase: UpdateCurrentGroupInPreferencesUseCase
 ) : ViewModel() {
-
-	protected lateinit var router: StartingGroupMenuRouter
 
 	protected val debounceTime = 200L
 	protected var localStorageGroupsChangesJob: Job? = null
@@ -48,13 +45,9 @@ abstract class BaseGroupMenuViewModel(
 	protected val _selectedGroup = MutableStateFlow("")
 	var selectedGroup = _selectedGroup.asStateFlow()
 
-	fun initialize() {
+	open fun initialize() {
 		updateDatabaseWithRemoteData()
 		extractCashedGroupsFromDB()
-	}
-
-	fun initRouter(router: StartingGroupMenuRouter) {
-		this.router = router
 	}
 
 	fun onGroupChange(group: String) {
@@ -78,10 +71,12 @@ abstract class BaseGroupMenuViewModel(
 		_state.value = _state.value.copy(isSuggestionsExpanded = false)
 	}
 
-	fun onSubmitGroupAction() {
+	open fun onSubmitGroupAction() {
 		_state.value = GroupMenuScreenState.Loading()
 		checkIsGroupExists()
 	}
+
+	protected abstract fun onGroupExistingAction()
 
 	protected fun checkIsGroupExists() {
 		viewModelScope.launch {
@@ -90,7 +85,7 @@ abstract class BaseGroupMenuViewModel(
 			else {
 				updateCurrentGroupInPreferencesUseCase(_selectedGroup.value)
 				withContext(Dispatchers.Main) {
-					router.navigateToMainBottomNavScreen(_selectedGroup.value)
+					onGroupExistingAction()
 				}
 			}
 		}
