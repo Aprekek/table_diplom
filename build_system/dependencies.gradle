@@ -12,6 +12,7 @@ ext.Dependencies = [
 	KOIN_ANDROID           : "io.insert-koin:koin-android:${Versions.KOIN}",
 	KOIN_CORE              : "io.insert-koin:koin-core:${Versions.KOIN}",
 
+	LIFECYCLE_VIEWMODEL    : "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.LIFECYCLE_VIEWMODEL}",
 	COROUTINES_CORE        : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.KOTLIN}",
 
 	RETROFIT               : "com.squareup.retrofit2:retrofit:${Versions.RETROFIT}",

@@ -30,11 +30,11 @@ import org.koin.androidx.compose.viewModel
 import org.koin.core.parameter.parametersOf
 import org.koin.java.KoinJavaComponent.get
 import ru.sibsutis.table.feature.groups.startingscreen.R
-import ru.sibsutis.table.feature.groups.startingscreen.data.mapper.getNames
-import ru.sibsutis.table.feature.groups.startingscreen.presentation.StartingGroupMenuScreenState
-import ru.sibsutis.table.feature.groups.startingscreen.presentation.StartingGroupMenuScreenViewModel
+import ru.sibsutis.table.feature.groups.startingscreen.presentation.StartingScreenViewModel
 import ru.sibsutis.table.navigation.screens.startinggroupmenu.StartingGroupMenuContent
 import ru.sibsutis.table.navigation.screens.startinggroupmenu.StartingGroupMenuRouter
+import ru.sibsutis.table.shared.group.data.data.mapper.getNames
+import ru.sibsutis.table.shared.group.presentation.presentation.GroupMenuScreenState
 import ru.sibsutis.table.shared.ui.ButtonDT
 import ru.sibsutis.table.shared.ui.EditTextDT
 import ru.sibsutis.table.shared.ui.ToolbarDT
@@ -51,10 +51,10 @@ object StartingGroupMenuScreen : StartingGroupMenuContent {
 	private fun Content(navController: NavController) {
 		val context = LocalContext.current
 
-		val viewModel by viewModel<StartingGroupMenuScreenViewModel>()
+		val viewModel by viewModel<StartingScreenViewModel>()
 
 		LaunchedEffect(navController) {
-			viewModel.setRouter(
+			viewModel.initRouter(
 				get(StartingGroupMenuRouter::class.java) {
 					parametersOf(navController)
 				}
@@ -74,7 +74,7 @@ object StartingGroupMenuScreen : StartingGroupMenuContent {
 			)
 		}
 
-		if (state is StartingGroupMenuScreenState.NoGroupError) {
+		if (state is GroupMenuScreenState.NoGroupError) {
 			LaunchedEffect(true) {
 				viewModel.noGroupErrorWasShown()
 				Toast.makeText(context, context.getString(R.string.group_not_found), Toast.LENGTH_LONG).show()
@@ -98,7 +98,7 @@ object StartingGroupMenuScreen : StartingGroupMenuContent {
 				horizontalAlignment = Alignment.CenterHorizontally
 			) {
 
-				if (state is StartingGroupMenuScreenState.Loading) {
+				if (state is GroupMenuScreenState.Loading) {
 					CircularProgressIndicator()
 				} else {
 					EditTextDT(

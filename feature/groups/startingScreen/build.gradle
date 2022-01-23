@@ -9,20 +9,14 @@ dependencies {
 	implementation Dependencies.CORE
 	implementation Dependencies.APP_COMPAT
 	implementation Dependencies.MATERIAL
-	implementation Dependencies.KOIN_CORE
-	implementation Dependencies.KOIN_ANDROID
 	implementation Dependencies.COMPOSE.MATERIAL
 	implementation Dependencies.COMPOSE.KOIN
-	implementation Dependencies.COMPOSE.TOOLING
 	implementation Dependencies.COMPOSE.NAVIGATION
 
-	implementation Dependencies.MOSHI
-	implementation Dependencies.RETROFIT
-
-	implementation project(":database")
-	implementation project(':mockApiServer')
-	implementation project(":network")
 	implementation project(":navigation")
 	implementation project(":shared:ui")
 	implementation project(":shared:preferences")
+	implementation project(":shared:group:domain")
+	implementation project(":shared:group:data")
+	implementation project(":shared:group:presentation")
 }
