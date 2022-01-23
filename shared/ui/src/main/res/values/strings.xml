@@ -2,4 +2,7 @@
 	<string name="sibsutis_title">СибГУТИ</string>
 	<string name="group">Группа</string>
 	<string name="submit">Подтвердить</string>
+	<string name="reload">Повторить</string>
+	<string name="error">Произошла ошибка</string>
+	<string name="empty">Данных нет</string>
 </resources>
