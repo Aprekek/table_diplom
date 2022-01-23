@@ -6,6 +6,6 @@ class GetTeachersListUseCase(
 	private val repository: TeachersListRepository
 ) {
 
-	operator fun invoke() = repository.getTeachersList()
+	operator fun invoke(searchText: String = "") = repository.getTeachersList(searchText)
 
 }

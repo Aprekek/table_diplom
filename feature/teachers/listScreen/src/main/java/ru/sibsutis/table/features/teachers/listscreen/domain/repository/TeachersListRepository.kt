@@ -7,5 +7,5 @@ interface TeachersListRepository {
 
 	suspend fun updateLocalStorageWithRemoteData()
 
-	fun getTeachersList(): Flow<List<Teacher>>
+	fun getTeachersList(searchText: String): Flow<List<Teacher>>
 }
