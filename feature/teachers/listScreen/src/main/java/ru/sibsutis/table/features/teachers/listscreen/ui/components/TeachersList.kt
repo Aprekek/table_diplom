@@ -20,7 +20,7 @@ import ru.sibsutis.table.shared.ui.ToolbarDT
 fun TeachersList(
 	modifier: Modifier = Modifier,
 	teachers: Map<Char, List<Teacher>>,
-	onTeacherClick: () -> Unit = {}
+	onTeacherClick: (Teacher) -> Unit = {}
 ) {
 
 	LazyColumn(

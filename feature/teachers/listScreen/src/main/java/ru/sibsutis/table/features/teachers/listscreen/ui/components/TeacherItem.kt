@@ -1,6 +1,7 @@
 package ru.sibsutis.table.features.teachers.listscreen.ui.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,6 +26,7 @@ fun TeacherItem(
 		modifier = modifier
 			.fillMaxWidth()
 			.padding(8.dp)
+			.clickable { onTeacherClick(teacher) }
 	) {
 		Text(text = teacher.name, modifier = Modifier.align(Alignment.TopStart))
 		Column(
