@@ -11,6 +11,7 @@ import ru.sibsutis.table.di.appModule
 import ru.sibsutis.table.feature.groups.startingscreen.di.groupMenuModule
 import ru.sibsutis.table.navigation.di.navigationModule
 import ru.sibsutis.table.preferences.di.preferencesModule
+import ru.sibsutis.table.shared.group.data.data.di.groupDataModule
 import ru.sibsutis.table.shared.group.domain.di.groupDomainModule
 
 class App : Application() {
@@ -29,6 +30,7 @@ class App : Application() {
 				groupMenuModule,
 				navigationModule,
 				groupDomainModule,
+				groupDataModule,
 			)
 		}
 	}

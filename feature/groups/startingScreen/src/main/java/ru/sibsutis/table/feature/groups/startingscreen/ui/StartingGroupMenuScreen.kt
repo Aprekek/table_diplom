@@ -30,7 +30,7 @@ import org.koin.androidx.compose.viewModel
 import org.koin.core.parameter.parametersOf
 import org.koin.java.KoinJavaComponent.get
 import ru.sibsutis.table.feature.groups.startingscreen.R
-import ru.sibsutis.table.feature.groups.startingscreen.data.mapper.getNames
+import ru.sibsutis.table.shared.group.data.data.mapper.getNames
 import ru.sibsutis.table.feature.groups.startingscreen.presentation.StartingGroupMenuScreenState
 import ru.sibsutis.table.feature.groups.startingscreen.presentation.StartingGroupMenuScreenViewModel
 import ru.sibsutis.table.navigation.screens.startinggroupmenu.StartingGroupMenuContent

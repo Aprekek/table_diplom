@@ -25,4 +25,5 @@ dependencies {
 	implementation project(":shared:ui")
 	implementation project(":shared:preferences")
 	implementation project(":shared:group:domain")
+	implementation project(":shared:group:data")
 }

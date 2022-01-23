@@ -7,6 +7,12 @@ apply from: "$rootDir/build_system/androidLibrary.gradle"
 dependencies {
 
 	implementation Dependencies.KOTLIN_STANDARD_LIBRARY
+	implementation Dependencies.KOIN_CORE
+	implementation Dependencies.MOSHI
+	implementation Dependencies.RETROFIT
 
+	implementation project(":database")
+	implementation project(':mockApiServer')
+	implementation project(":network")
 	implementation project(":shared:group:domain")
 }

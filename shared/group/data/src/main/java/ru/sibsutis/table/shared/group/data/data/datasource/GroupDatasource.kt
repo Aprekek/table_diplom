@@ -1,8 +1,8 @@
-package ru.sibsutis.table.feature.groups.startingscreen.data.datasource
+package ru.sibsutis.table.shared.group.data.data.datasource
 
 import kotlinx.coroutines.flow.Flow
 import ru.sibsutis.table.database.entities.GroupEntity
-import ru.sibsutis.table.feature.groups.startingscreen.data.model.GroupModel
+import ru.sibsutis.table.shared.group.data.data.model.GroupModel
 
 interface GroupDatasource {
 
