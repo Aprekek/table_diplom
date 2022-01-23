@@ -1,7 +1,6 @@
 package ru.sibsutis.table.database.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -18,11 +17,11 @@ interface TeachersListDao {
 	@Query("DELETE FROM teachers_table")
 	suspend fun deleteAll()
 
-	@Query("SELECT * FROM teachers_table")
-	fun getTeachersList(): Flow<List<TeacherEntity>>
+	@Query("SELECT * FROM teachers_table WHERE name LIKE '%' || :searchText || '%'")
+	fun getTeachersList(searchText: String = ""): Flow<List<TeacherEntity>>
 
 	@Transaction
-	suspend fun replaceOldDataWithNewData(groups: List<TeacherEntity>){
+	suspend fun replaceOldDataWithNewData(groups: List<TeacherEntity>) {
 		deleteAll()
 		insertTeachers(groups)
 	}
