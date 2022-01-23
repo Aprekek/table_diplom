@@ -8,7 +8,7 @@ import org.koin.core.logger.Level.ERROR
 import ru.sibsutis.network.di.networkModule
 import ru.sibsutis.table.database.di.databaseModule
 import ru.sibsutis.table.di.appModule
-import ru.sibsutis.table.feature.groups.startingscreen.di.groupMenuModule
+import ru.sibsutis.table.feature.groups.startingscreen.di.startingScreenModule
 import ru.sibsutis.table.navigation.di.navigationModule
 import ru.sibsutis.table.preferences.di.preferencesModule
 import ru.sibsutis.table.shared.group.data.data.di.groupDataModule
@@ -27,7 +27,7 @@ class App : Application() {
 				networkModule,
 				databaseModule,
 				preferencesModule,
-				groupMenuModule,
+				startingScreenModule,
 				navigationModule,
 				groupDomainModule,
 				groupDataModule,

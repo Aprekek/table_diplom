@@ -1,4 +1,4 @@
-package ru.sibsutis.table.feature.groups.startingscreen.presentation
+package ru.sibsutis.table.shared.group.presentation.presentation
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -13,39 +13,39 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import ru.sibsutis.table.navigation.screens.startinggroupmenu.StartingGroupMenuRouter
 import ru.sibsutis.table.shared.group.domain.entities.Group
 import ru.sibsutis.table.shared.group.domain.usecases.GetGroupsListUseCase
 import ru.sibsutis.table.shared.group.domain.usecases.IsGroupExistUseCase
 import ru.sibsutis.table.shared.group.domain.usecases.UpdateCurrentGroupInPreferencesUseCase
 import ru.sibsutis.table.shared.group.domain.usecases.UpdateLocalGroupStorageUseCase
-import ru.sibsutis.table.navigation.screens.startinggroupmenu.StartingGroupMenuRouter
 
-open class StartingGroupMenuScreenViewModel(
-	private val getGroupsListUseCase: GetGroupsListUseCase,
-	private val updateLocalGroupStorageUseCase: UpdateLocalGroupStorageUseCase,
-	private val isGroupExistUseCase: IsGroupExistUseCase,
-	private val updateCurrentGroupInPreferencesUseCase: UpdateCurrentGroupInPreferencesUseCase
+abstract class BaseGroupMenuViewModel(
+	protected val getGroupsListUseCase: GetGroupsListUseCase,
+	protected val updateLocalGroupStorageUseCase: UpdateLocalGroupStorageUseCase,
+	protected val isGroupExistUseCase: IsGroupExistUseCase,
+	protected val updateCurrentGroupInPreferencesUseCase: UpdateCurrentGroupInPreferencesUseCase
 ) : ViewModel() {
 
-	private lateinit var router: StartingGroupMenuRouter
+	protected lateinit var router: StartingGroupMenuRouter
 
-	private val debounceTime = 200L
-	private var localStorageGroupsChangesJob: Job? = null
+	protected val debounceTime = 200L
+	protected var localStorageGroupsChangesJob: Job? = null
 
-	private var _state =
-		MutableStateFlow<StartingGroupMenuScreenState>(StartingGroupMenuScreenState.NoError(isSuggestionsExpanded = true))
+	protected var _state =
+		MutableStateFlow<GroupMenuScreenState>(GroupMenuScreenState.NoError(isSuggestionsExpanded = true))
 	val state = _state.asStateFlow()
 
-	private var onSuggestionItemPerform = false
+	protected var onSuggestionItemPerform = false
 		get() {
 			val t = field
 			field = false
 			return t
 		}
-	private var _suggestedGroups = MutableStateFlow<List<Group>>(listOf())
+	protected var _suggestedGroups = MutableStateFlow<List<Group>>(listOf())
 	val suggestedGroups = _suggestedGroups.asStateFlow()
 
-	private val _selectedGroup = MutableStateFlow("")
+	protected val _selectedGroup = MutableStateFlow("")
 	var selectedGroup = _selectedGroup.asStateFlow()
 
 	fun initialize() {
@@ -53,7 +53,7 @@ open class StartingGroupMenuScreenViewModel(
 		extractCashedGroupsFromDB()
 	}
 
-	fun setRouter(router: StartingGroupMenuRouter) {
+	fun initRouter(router: StartingGroupMenuRouter) {
 		this.router = router
 	}
 
@@ -71,7 +71,7 @@ open class StartingGroupMenuScreenViewModel(
 	}
 
 	fun noGroupErrorWasShown() {
-		_state.value = StartingGroupMenuScreenState.NoError(_state.value.isSuggestionsExpanded)
+		_state.value = GroupMenuScreenState.NoError(_state.value.isSuggestionsExpanded)
 	}
 
 	fun onDismissAction() {
@@ -79,14 +79,14 @@ open class StartingGroupMenuScreenViewModel(
 	}
 
 	fun onSubmitGroupAction() {
-		_state.value = StartingGroupMenuScreenState.Loading()
+		_state.value = GroupMenuScreenState.Loading()
 		checkIsGroupExists()
 	}
 
-	private fun checkIsGroupExists() {
+	protected fun checkIsGroupExists() {
 		viewModelScope.launch {
 			if (!isGroupExistUseCase(_selectedGroup.value))
-				_state.value = StartingGroupMenuScreenState.NoGroupError(_state.value.isSuggestionsExpanded)
+				_state.value = GroupMenuScreenState.NoGroupError(_state.value.isSuggestionsExpanded)
 			else {
 				updateCurrentGroupInPreferencesUseCase(_selectedGroup.value)
 				withContext(Dispatchers.Main) {
@@ -96,7 +96,7 @@ open class StartingGroupMenuScreenViewModel(
 		}
 	}
 
-	private fun updateDatabaseWithRemoteData() {
+	protected fun updateDatabaseWithRemoteData() {
 		viewModelScope.launch {
 			try {
 				updateLocalGroupStorageUseCase()
@@ -106,7 +106,7 @@ open class StartingGroupMenuScreenViewModel(
 		}
 	}
 
-	private fun extractCashedGroupsFromDB() {
+	protected fun extractCashedGroupsFromDB() {
 		_selectedGroup
 			.filter(String::isNotEmpty)
 			.debounce(debounceTime)
@@ -114,7 +114,7 @@ open class StartingGroupMenuScreenViewModel(
 			.launchIn(viewModelScope)
 	}
 
-	private fun getGroupsWithNewFilter(filter: String) {
+	protected fun getGroupsWithNewFilter(filter: String) {
 		localStorageGroupsChangesJob?.cancel()
 		localStorageGroupsChangesJob = getGroupsListUseCase(filter)
 			.onEach { newList ->
