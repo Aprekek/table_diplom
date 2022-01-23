@@ -6,15 +6,18 @@ import androidx.room.TypeConverters
 import ru.sibsutis.table.database.converters.LessonTypeConverter
 import ru.sibsutis.table.database.converters.WeekTypeConverter
 import ru.sibsutis.table.database.dao.GroupDao
+import ru.sibsutis.table.database.dao.RecentlyWatchedGroupsDao
 import ru.sibsutis.table.database.entities.GroupEntity
 import ru.sibsutis.table.database.entities.LessonEntity
+import ru.sibsutis.table.database.entities.RecentlyWatchedGroupEntity
 import ru.sibsutis.table.database.entities.TeacherEntity
 
 @Database(
 	entities = [
 		GroupEntity::class,
 		LessonEntity::class,
-		TeacherEntity::class
+		TeacherEntity::class,
+		RecentlyWatchedGroupEntity::class,
 	],
 	version = 1,
 	exportSchema = false
@@ -31,4 +34,5 @@ abstract class TableDatabase : RoomDatabase() {
 	}
 
 	abstract fun groupDao(): GroupDao
+	abstract fun recentlyWatchedGroupsDao(): RecentlyWatchedGroupsDao
 }
