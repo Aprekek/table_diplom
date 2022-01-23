@@ -13,5 +13,5 @@ class TeachersListDatasourceImpl(
 
 	override suspend fun getRemoteTeachersData(): List<TeachersListModel> = api.getTeachersList()
 
-	override fun getTeachersList(): Flow<List<TeacherEntity>> = dao.getTeachersList()
+	override fun getTeachersList(searchText: String): Flow<List<TeacherEntity>> = dao.getTeachersList(searchText)
 }

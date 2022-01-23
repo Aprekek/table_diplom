@@ -23,6 +23,6 @@ class TeachersListRepositoryImpl(
 		}
 	}
 
-	override fun getTeachersList(): Flow<List<Teacher>> =
-		dao.getTeachersList().toEntityList().flowOn(Dispatchers.IO)
+	override fun getTeachersList(searchText: String): Flow<List<Teacher>> =
+		dao.getTeachersList(searchText).toEntityList().flowOn(Dispatchers.IO)
 }

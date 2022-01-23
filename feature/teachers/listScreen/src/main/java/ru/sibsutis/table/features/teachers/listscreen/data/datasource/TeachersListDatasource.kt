@@ -8,5 +8,5 @@ interface TeachersListDatasource {
 
 	suspend fun getRemoteTeachersData(): List<TeachersListModel>
 
-	fun getTeachersList(): Flow<List<TeacherEntity>>
+	fun getTeachersList(searchText: String): Flow<List<TeacherEntity>>
 }
