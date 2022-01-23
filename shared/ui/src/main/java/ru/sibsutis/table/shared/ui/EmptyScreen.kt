@@ -40,6 +40,6 @@ fun EmptyScreen(modifier: Modifier = Modifier) {
 
 @Composable
 @Preview
-private fun emptyPreview(){
+private fun EmptyPreview() {
 	EmptyScreen(Modifier.background(Color.White))
 }
