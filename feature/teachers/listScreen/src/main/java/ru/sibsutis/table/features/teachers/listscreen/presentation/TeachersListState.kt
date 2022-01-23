@@ -9,7 +9,7 @@ sealed class TeachersListState {
 	object Loading : TeachersListState()
 
 	class Content(
-		val teachersList:  Map<Char, List<Teacher>>
+		val teachersList: Map<Char, List<Teacher>>
 	) : TeachersListState()
 
 	object Error : TeachersListState()

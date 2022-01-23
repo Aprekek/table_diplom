@@ -6,19 +6,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import org.koin.androidx.compose.viewModel
-import ru.sibsutis.table.features.teachers.listscreen.R
 import ru.sibsutis.table.features.teachers.listscreen.domain.entity.Teacher
+import ru.sibsutis.table.features.teachers.listscreen.presentation.SearchWidgetState
 import ru.sibsutis.table.features.teachers.listscreen.presentation.TeachersListState
 import ru.sibsutis.table.features.teachers.listscreen.presentation.TeachersListViewModel
+import ru.sibsutis.table.features.teachers.listscreen.ui.components.MainAppBar
 import ru.sibsutis.table.features.teachers.listscreen.ui.components.TeachersList
 import ru.sibsutis.table.navigation.screens.teachers.TeachersContent
 import ru.sibsutis.table.shared.ui.EmptyScreen
 import ru.sibsutis.table.shared.ui.ErrorScreen
 import ru.sibsutis.table.shared.ui.LoadingScreen
-import ru.sibsutis.table.shared.ui.ToolbarDT
 
 @ExperimentalFoundationApi
 object TeachersListScreen : TeachersContent {
@@ -36,11 +35,28 @@ object TeachersListScreen : TeachersContent {
 
 		val state by viewModel.state.collectAsState()
 
+		val searchWidgetState by viewModel.searchWidgetState
+
+		val searchTextState by viewModel.searchTextState
+
 		Scaffold(
 			topBar = {
-				ToolbarDT(
-					title = stringResource(id = R.string.teacher_title),
-					enableBackButton = false
+				MainAppBar(
+					searchWidgetState = searchWidgetState,
+					searchTextState = searchTextState,
+					onTextChange = {
+						viewModel.updateSearchTextState(newValue = it)
+					},
+					onCloseClicked = {
+						viewModel.reset()
+						viewModel.updateSearchWidgetState(newValue = SearchWidgetState.CLOSED)
+					},
+					onSearchClicked = {
+						viewModel.search(it)
+					},
+					onSearchTriggered = {
+						viewModel.updateSearchWidgetState(newValue = SearchWidgetState.OPENED)
+					}
 				)
 			}
 		) {
