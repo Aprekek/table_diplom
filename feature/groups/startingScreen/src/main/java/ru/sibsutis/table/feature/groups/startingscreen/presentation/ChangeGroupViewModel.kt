@@ -1,9 +1,9 @@
 package ru.sibsutis.table.feature.groups.startingscreen.presentation
 
-import ru.sibsutis.table.feature.groups.startingscreen.domain.usecases.GetGroupsListUseCase
-import ru.sibsutis.table.feature.groups.startingscreen.domain.usecases.IsGroupExistUseCase
-import ru.sibsutis.table.feature.groups.startingscreen.domain.usecases.UpdateCurrentGroupInPreferencesUseCase
-import ru.sibsutis.table.feature.groups.startingscreen.domain.usecases.UpdateLocalGroupStorageUseCase
+import ru.sibsutis.table.shared.group.domain.usecases.GetGroupsListUseCase
+import ru.sibsutis.table.shared.group.domain.usecases.IsGroupExistUseCase
+import ru.sibsutis.table.shared.group.domain.usecases.UpdateCurrentGroupInPreferencesUseCase
+import ru.sibsutis.table.shared.group.domain.usecases.UpdateLocalGroupStorageUseCase
 
 class ChangeGroupViewModel(
 	getGroupsListUseCase: GetGroupsListUseCase,

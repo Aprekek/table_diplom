@@ -4,7 +4,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import ru.sibsutis.table.database.entities.GroupEntity
 import ru.sibsutis.table.feature.groups.startingscreen.data.model.GroupModel
-import ru.sibsutis.table.feature.groups.startingscreen.domain.entities.Group
+import ru.sibsutis.table.shared.group.domain.entities.Group
 
 fun GroupModel.toDatabaseEntity() = GroupEntity(name = name)
 fun List<GroupModel>.toDatabaseEntity() = map(GroupModel::toDatabaseEntity)

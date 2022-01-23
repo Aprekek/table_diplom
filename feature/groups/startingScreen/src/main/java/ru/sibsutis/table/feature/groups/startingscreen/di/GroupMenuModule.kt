@@ -5,16 +5,12 @@ import org.koin.dsl.module
 import ru.sibsutis.mockapiserver.changer.MOCK
 import ru.sibsutis.mockapiserver.changer.getRetrofit
 import ru.sibsutis.network.retrofit.createRetrofitService
-import ru.sibsutis.table.feature.groups.startingscreen.data.api.GroupsMenuApi
-import ru.sibsutis.table.feature.groups.startingscreen.data.datasource.GroupDatasource
-import ru.sibsutis.table.feature.groups.startingscreen.data.datasource.GroupDatasourceImpl
-import ru.sibsutis.table.feature.groups.startingscreen.data.repository.GroupMenuRepositoryImpl
-import ru.sibsutis.table.feature.groups.startingscreen.domain.repository.GroupMenuRepository
-import ru.sibsutis.table.feature.groups.startingscreen.domain.usecases.GetGroupsListUseCase
-import ru.sibsutis.table.feature.groups.startingscreen.domain.usecases.IsGroupExistUseCase
-import ru.sibsutis.table.feature.groups.startingscreen.domain.usecases.UpdateCurrentGroupInPreferencesUseCase
-import ru.sibsutis.table.feature.groups.startingscreen.domain.usecases.UpdateLocalGroupStorageUseCase
 import ru.sibsutis.table.feature.groups.startingscreen.presentation.StartingGroupMenuScreenViewModel
+import ru.sibsutis.table.shared.group.data.data.api.GroupsMenuApi
+import ru.sibsutis.table.shared.group.data.data.datasource.GroupDatasource
+import ru.sibsutis.table.shared.group.data.data.datasource.GroupDatasourceImpl
+import ru.sibsutis.table.shared.group.data.data.repository.GroupMenuRepositoryImpl
+import ru.sibsutis.table.shared.group.domain.repository.GroupMenuRepository
 
 val groupMenuModule = module {
 
@@ -33,11 +29,6 @@ val groupMenuModule = module {
 			dao = get()
 		)
 	}
-
-	factory { GetGroupsListUseCase(repository = get()) }
-	factory { UpdateLocalGroupStorageUseCase(repository = get()) }
-	factory { IsGroupExistUseCase(repository = get()) }
-	factory { UpdateCurrentGroupInPreferencesUseCase(groupPreferences = get()) }
 
 	viewModel {
 		StartingGroupMenuScreenViewModel(

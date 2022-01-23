@@ -5,6 +5,7 @@ apply from: "$rootDir/build_system/androidLibrary.gradle"
 
 dependencies {
 	implementation Dependencies.COROUTINES_CORE
+	implementation Dependencies.KOIN_CORE
 
 	implementation project(":shared:preferences")
 }

@@ -1,7 +1,7 @@
-package ru.sibsutis.table.feature.groups.startingscreen.domain.repository
+package ru.sibsutis.table.shared.group.domain.repository
 
 import kotlinx.coroutines.flow.Flow
-import ru.sibsutis.table.feature.groups.startingscreen.domain.entities.Group
+import ru.sibsutis.table.shared.group.domain.entities.Group
 
 interface GroupMenuRepository {
 

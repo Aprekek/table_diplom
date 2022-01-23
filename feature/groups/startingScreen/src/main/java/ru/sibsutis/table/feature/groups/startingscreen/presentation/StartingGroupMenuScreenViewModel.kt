@@ -13,11 +13,11 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import ru.sibsutis.table.feature.groups.startingscreen.domain.entities.Group
-import ru.sibsutis.table.feature.groups.startingscreen.domain.usecases.GetGroupsListUseCase
-import ru.sibsutis.table.feature.groups.startingscreen.domain.usecases.IsGroupExistUseCase
-import ru.sibsutis.table.feature.groups.startingscreen.domain.usecases.UpdateCurrentGroupInPreferencesUseCase
-import ru.sibsutis.table.feature.groups.startingscreen.domain.usecases.UpdateLocalGroupStorageUseCase
+import ru.sibsutis.table.shared.group.domain.entities.Group
+import ru.sibsutis.table.shared.group.domain.usecases.GetGroupsListUseCase
+import ru.sibsutis.table.shared.group.domain.usecases.IsGroupExistUseCase
+import ru.sibsutis.table.shared.group.domain.usecases.UpdateCurrentGroupInPreferencesUseCase
+import ru.sibsutis.table.shared.group.domain.usecases.UpdateLocalGroupStorageUseCase
 import ru.sibsutis.table.navigation.screens.startinggroupmenu.StartingGroupMenuRouter
 
 open class StartingGroupMenuScreenViewModel(

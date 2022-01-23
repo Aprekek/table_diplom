@@ -1,6 +1,6 @@
-package ru.sibsutis.table.feature.groups.startingscreen.domain.usecases
+package ru.sibsutis.table.shared.group.domain.usecases
 
-import ru.sibsutis.table.feature.groups.startingscreen.domain.repository.GroupMenuRepository
+import ru.sibsutis.table.shared.group.domain.repository.GroupMenuRepository
 
 class UpdateLocalGroupStorageUseCase(
 	private val repository: GroupMenuRepository

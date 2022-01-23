@@ -7,7 +7,7 @@ import ru.sibsutis.table.database.dao.GroupDao
 import ru.sibsutis.table.feature.groups.startingscreen.data.datasource.GroupDatasource
 import ru.sibsutis.table.feature.groups.startingscreen.data.mapper.toDatabaseEntity
 import ru.sibsutis.table.feature.groups.startingscreen.data.mapper.toEntityList
-import ru.sibsutis.table.feature.groups.startingscreen.domain.repository.GroupMenuRepository
+import ru.sibsutis.table.shared.group.domain.repository.GroupMenuRepository
 
 class GroupMenuRepositoryImpl(
 	private val datasource: GroupDatasource,

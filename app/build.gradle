@@ -19,6 +19,7 @@ dependencies {
 	implementation project(":shared:lesson")
 	implementation project(":shared:ui")
 	implementation project(":shared:preferences")
+	implementation project(":shared:group:domain")
 	implementation project(':feature:groups:startingScreen')
 	implementation project(':feature:mainBottomNavigationScreen')
 }
