@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun EditTextDT(
+	modifier: Modifier = Modifier,
 	expanded: Boolean,
 	textFieldValue: TextFieldValue,
 	labelText: String,
@@ -24,15 +25,14 @@ fun EditTextDT(
 	onSuggestionItemClick: (item: String) -> Unit
 ) {
 	ExposedDropdownMenuBox(
+		modifier = modifier,
 		expanded = textFieldValue.text.isNotBlank(),
 		onExpandedChange = {}
 	) {
 		OutlinedTextField(
 			value = textFieldValue,
 			label = { Text(text = labelText) },
-			onValueChange = {
-				onValueChange(it.text)
-			},
+			onValueChange = { onValueChange(it.text) },
 			modifier = Modifier.fillMaxWidth(),
 			keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done)
 		)
@@ -46,12 +46,8 @@ fun EditTextDT(
 				suggestions.forEach { suggestionValue ->
 					DropdownMenuItem(
 						modifier = Modifier.fillMaxWidth(),
-						onClick = {
-							onSuggestionItemClick(suggestionValue)
-						}
-					) {
-						Text(text = suggestionValue)
-					}
+						onClick = { onSuggestionItemClick(suggestionValue) }
+					) { Text(text = suggestionValue) }
 				}
 			}
 		}
