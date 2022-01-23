@@ -32,7 +32,7 @@ fun EmptyScreen(modifier: Modifier = Modifier) {
 		Image(
 			painterResource(id = R.drawable.ic_empty),
 			colorFilter = ColorFilter.tint(Color.Black),
-			contentDescription = "Error image"
+			contentDescription = null
 		)
 		Text(text = stringResource(id = R.string.empty))
 	}

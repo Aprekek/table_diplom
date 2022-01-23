@@ -37,10 +37,13 @@ fun ErrorScreen(
 		Image(
 			painterResource(id = R.drawable.ic_error),
 			colorFilter = ColorFilter.tint(Color.Black),
-			contentDescription = "Error image"
+			contentDescription = null
 		)
 		Text(text = stringResource(id = R.string.error))
-		Button(modifier = Modifier.padding(20.dp), onClick = reload) {
+		Button(
+			modifier = Modifier.padding(20.dp),
+			onClick = reload
+		) {
 			Text(
 				text = stringResource(id = R.string.reload),
 				fontSize = 15.sp
