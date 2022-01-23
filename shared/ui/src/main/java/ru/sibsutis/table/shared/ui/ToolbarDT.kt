@@ -4,13 +4,18 @@ import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 
 @Composable
 fun ToolbarDT(
 	title: String,
 	enableBackButton: Boolean = true,
+	enableSearchButton: Boolean = false,
+	onSearchButtonClick: () -> Unit = {},
 	onBackButtonClick: () -> Unit = {}
 ) {
 	TopAppBar(
@@ -25,6 +30,18 @@ fun ToolbarDT(
 					)
 				}
 			}
-		} else null
+		} else null,
+		actions = {
+			if (enableSearchButton) {
+				IconButton(
+					modifier = Modifier,
+					onClick = { onSearchButtonClick() }) {
+					Icon(
+						imageVector = Icons.Filled.Search,
+						contentDescription = null
+					)
+				}
+			}
+		}
 	)
 }
