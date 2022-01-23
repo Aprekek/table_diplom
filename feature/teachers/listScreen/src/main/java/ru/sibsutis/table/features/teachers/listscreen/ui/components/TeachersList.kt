@@ -1,5 +1,6 @@
 package ru.sibsutis.table.features.teachers.listscreen.ui.components
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
@@ -14,27 +15,35 @@ import ru.sibsutis.table.features.teachers.listscreen.R.string
 import ru.sibsutis.table.features.teachers.listscreen.domain.entity.Teacher
 import ru.sibsutis.table.shared.ui.ToolbarDT
 
+@ExperimentalFoundationApi
 @Composable
 fun TeachersList(
 	modifier: Modifier = Modifier,
-	teachers: List<Teacher>,
-	onTeacherClick: (Teacher) -> Unit = {}
+	teachers: Map<Char, List<Teacher>>,
+	onTeacherClick: () -> Unit = {}
 ) {
 
 	LazyColumn(
 		modifier = modifier.fillMaxSize()
 	) {
-		items(count = teachers.size) { teacherIndex ->
-			val teacher = teachers[teacherIndex]
-			TeacherItem(
-				teacher = teacher,
-				onTeacherClick = onTeacherClick
-			)
-			Divider()
+
+		teachers.forEach { (header, teacherList) ->
+			stickyHeader {
+				AlphabetItem(char = header.toString())
+			}
+			items(count = teacherList.size) { teacherIndex ->
+				val teacher = teacherList[teacherIndex]
+				TeacherItem(
+					teacher = teacher,
+					onTeacherClick = onTeacherClick
+				)
+				Divider()
+			}
 		}
 	}
 }
 
+@ExperimentalFoundationApi
 @Composable
 @Preview
 private fun ListPreview() {
@@ -44,6 +53,7 @@ private fun ListPreview() {
 		Teacher("Абрамова Евгения Сергеевна", "89994662475", "email@email.com", "k1 aud 446", "ИВТ", "345"),
 		Teacher("Храмова Антонина Павловна", "89994662475", "email@email.com", "k1 aud 446", "ИВТ", "345"),
 	)
+	val groupedList = teachers.groupBy { it.name[0] }.toSortedMap()
 	Scaffold(topBar = {
 		ToolbarDT(
 			title = stringResource(id = string.teacher_title),
@@ -52,7 +62,7 @@ private fun ListPreview() {
 	}) {
 
 		TeachersList(
-			teachers = teachers,
+			teachers = groupedList,
 			modifier = Modifier.background(Color.White)
 		)
 	}

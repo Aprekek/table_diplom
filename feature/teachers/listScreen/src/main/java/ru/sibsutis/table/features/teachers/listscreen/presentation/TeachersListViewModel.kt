@@ -44,7 +44,8 @@ class TeachersListViewModel(
 		localStorageTeacherChangesJob?.cancel()
 		localStorageTeacherChangesJob = getTeachersListUseCase()
 			.onEach { newList ->
-				_state.value = TeachersListState.Content(newList)
+				val groupedList = newList.groupBy { it.name[0] }.toSortedMap()
+				_state.value = TeachersListState.Content(groupedList)
 			}
 			.launchIn(viewModelScope)
 	}
