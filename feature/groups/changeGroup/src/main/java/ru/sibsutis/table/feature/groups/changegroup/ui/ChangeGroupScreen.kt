@@ -2,20 +2,9 @@ package ru.sibsutis.table.feature.groups.changegroup.ui
 
 import android.widget.Toast
 import androidx.compose.foundation.ScrollState
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.Divider
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -23,20 +12,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.constraintlayout.compose.ConstrainedLayoutReference
 import androidx.constraintlayout.compose.ConstraintLayout
-import androidx.constraintlayout.compose.ConstraintLayoutScope
-import androidx.constraintlayout.compose.Dimension
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
@@ -48,11 +29,7 @@ import ru.sibsutis.table.feature.groups.changegroup.presentation.ChangeGroupView
 import ru.sibsutis.table.navigation.screens.changegroup.ChangeGroupNavigationContent
 import ru.sibsutis.table.navigation.screens.changegroup.ChangeGroupNavigationContent.Companion.path
 import ru.sibsutis.table.navigation.screens.changegroup.ChangeGroupNavigationRouter
-import ru.sibsutis.table.shared.group.data.data.mapper.getNames
-import ru.sibsutis.table.shared.group.domain.entities.Group
 import ru.sibsutis.table.shared.group.presentation.presentation.GroupMenuScreenState
-import ru.sibsutis.table.shared.ui.ButtonDT
-import ru.sibsutis.table.shared.ui.EditTextDT
 import ru.sibsutis.table.shared.ui.LoadingScreen
 import ru.sibsutis.table.shared.ui.ToolbarDT
 
@@ -104,10 +81,9 @@ object ChangeGroupScreen : ChangeGroupNavigationContent {
 		Scaffold(
 			modifier = Modifier.fillMaxSize(),
 			topBar = {
-				ToolbarDT(
-					title = stringResource(id = R.string.sibsutis_title),
-					enableBackButton = false
-				)
+				ToolbarDT(title = stringResource(id = R.string.sibsutis_title)) {
+					navController.popBackStack()
+				}
 			}
 		) {
 
