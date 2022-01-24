@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="about_app">О приложении</string>
+	<string name="about_app_author">Авторы ИС-841</string>
+	<string name="about_app_disclamer">Cибгути, 2022</string>
+	<string name="about_app_perov">Перов А.Е.</string>
+	<string name="about_app_shamburov">Шамбуров М.К.</string>
+</resources>
