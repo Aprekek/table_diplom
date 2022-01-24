@@ -22,6 +22,7 @@ allprojects {
 		kotlinOptions {
 			freeCompilerArgs += "-Xopt-in=androidx.compose.material.ExperimentalMaterialApi"
 			freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+			freeCompilerArgs += "-Xopt-in=androidx.compose.ui.ExperimentalComposeUiApi"
 			freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
 			freeCompilerArgs += "-Xopt-in=kotlin.Experimental"
 		}

@@ -11,6 +11,7 @@ dependencies {
 	implementation Dependencies.COMPOSE.MATERIAL
 	implementation Dependencies.COMPOSE.KOIN
 	implementation Dependencies.COMPOSE.NAVIGATION
+	implementation Dependencies.COMPOSE.CONSTRAINT_LAYOUT
 
 	implementation project(":database")
 	implementation project(":navigation")
