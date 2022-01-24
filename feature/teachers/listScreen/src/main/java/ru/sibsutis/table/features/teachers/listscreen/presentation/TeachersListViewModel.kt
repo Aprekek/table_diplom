@@ -25,7 +25,7 @@ class TeachersListViewModel(
 	private val _state = MutableStateFlow<TeachersListState>(TeachersListState.Initialize)
 	val state = _state.asStateFlow()
 
-	var localStorageTeacherChangesJob: Job? = null
+	private var localStorageTeacherChangesJob: Job? = null
 
 	private val _searchWidgetState: MutableState<SearchWidgetState> =
 		mutableStateOf(value = CLOSED)
