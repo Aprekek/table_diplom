@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="group_not_found">Группа не найдена</string>
+	<string name="recently_watched_groups">Вы также недавно смотрели:</string>
+</resources>

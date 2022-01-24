@@ -54,7 +54,7 @@ object StartingGroupMenuScreen : StartingGroupMenuContent {
 		val viewModel by viewModel<StartingScreenViewModel>()
 
 		LaunchedEffect(navController) {
-			viewModel.initRouter(
+			viewModel.setRouter(
 				get(StartingGroupMenuRouter::class.java) {
 					parametersOf(navController)
 				}
