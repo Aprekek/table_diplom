@@ -44,6 +44,9 @@ class ChangeGroupViewModel(
 
 	override fun onSubmitGroupAction() {
 		if (_selectedGroup.value != currentlyActiveGroup) {
+			viewModelScope.launch {
+				addGroupToRecentlyWatchedUseCase(_selectedGroup.value)
+			}
 			super.onSubmitGroupAction()
 		} else {
 			router.popToMainBottomNavigation()
