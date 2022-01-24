@@ -26,4 +26,5 @@ dependencies {
 	implementation project(':feature:mainBottomNavigationScreen')
 	implementation project(':feature:teachers:listScreen')
 	implementation project(':feature:aboutApp')
+	implementation project(':feature:timetable')
 }
