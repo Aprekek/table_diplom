@@ -12,6 +12,6 @@ class SettingsRouter(
 	}
 
 	fun navigateToAboutAppScreen() {
-		// TODO
+		navigator.navigate(AboutAppContent.createPath())
 	}
 }
