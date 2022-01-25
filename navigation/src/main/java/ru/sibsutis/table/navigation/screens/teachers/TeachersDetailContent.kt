@@ -6,12 +6,21 @@ import ru.sibsutis.table.navigation.BaseNavInfo
 
 interface TeachersDetailContent {
 
-	companion object : BaseNavInfo {
+	class Arguments {
+		companion object {
 
-		override val path = "teachers/details"
-
-		fun createPath() = path
+			const val TEACHER_NAME = "teacherName"
+		}
 	}
 
-	fun route(navGraphBuilder: NavGraphBuilder, navController: NavController)
+	companion object : BaseNavInfo {
+
+		override val path = "teachers/{${Arguments.TEACHER_NAME}}"
+
+		fun createPath(teacherName:String): String{
+			return "teachers/${teacherName}"
+		}
+	}
+
+	fun route(navGraphBuilder: NavGraphBuilder, navController: NavController, teacherName: String)
 }

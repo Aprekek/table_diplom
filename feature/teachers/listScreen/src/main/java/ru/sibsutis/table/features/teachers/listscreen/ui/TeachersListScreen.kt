@@ -76,7 +76,7 @@ object TeachersListScreen : TeachersContent {
 
 				is TeachersListState.Error   -> ErrorScreen(reload = { viewModel.initialize() })
 
-				is TeachersListState.Content -> ContentScreen(state as TeachersListState.Content) { router.navigateToDetails() }
+				is TeachersListState.Content -> ContentScreen(state as TeachersListState.Content) { router.navigateToDetails(it.name) }
 			}
 		}
 	}

@@ -9,14 +9,15 @@ import ru.sibsutis.table.navigation.screens.teachers.TeachersDetailContent
 
 object DetailsScreen : TeachersDetailContent {
 
-	override fun route(navGraphBuilder: NavGraphBuilder, navController: NavController) {
+	override fun route(navGraphBuilder: NavGraphBuilder, navController: NavController, teacherName: String) {
 		navGraphBuilder.composable(TeachersDetailContent.path) {
-			Content(navController)
+			val teacher = it.arguments?.getString(TeachersDetailContent.Arguments.TEACHER_NAME) ?: teacherName
+			Content(navController, teacher)
 		}
 	}
 
 	@Composable
-	fun Content(navController: NavController) {
-		Text(text = "test")
+	fun Content(navController: NavController, teacherName: String) {
+		Text(text = teacherName)
 	}
 }

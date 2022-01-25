@@ -10,7 +10,7 @@ import ru.sibsutis.table.feature.teachers.detailsscreen.ui.DetailsScreen
 import ru.sibsutis.table.features.mainbottomnavigationscreen.ui.MainBottomNavigationScreen
 
 @Composable
-fun GlobalController(startDestination: String, currentGroup: String = "") {
+fun GlobalController(startDestination: String, currentGroup: String = "", teacherName: String = "") {
 	val navController = rememberNavController()
 	NavHost(
 		navController = navController,
@@ -20,6 +20,6 @@ fun GlobalController(startDestination: String, currentGroup: String = "") {
 		ChangeGroupScreen.route(this, navController)
 		MainBottomNavigationScreen.route(this, navController, currentGroup)
 		AboutAppScreen.route(this, navController)
-		DetailsScreen.route(this, navController)
+		DetailsScreen.route(this, navController, teacherName)
 	}
 }

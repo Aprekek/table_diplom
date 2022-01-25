@@ -6,9 +6,9 @@ class TeacherRouter(
 	private val navigator: NavController
 ) {
 
-	fun navigateToDetails() {
+	fun navigateToDetails(currentTeacher: String) {
 		navigator.navigate(
-			TeachersDetailContent.createPath()
+			TeachersDetailContent.createPath(currentTeacher)
 		)
 	}
 }

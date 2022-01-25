@@ -77,8 +77,4 @@ class TeachersListViewModel(
 			}
 			.launchIn(viewModelScope)
 	}
-
-	fun navigateToSelectedTeacher(item: Teacher) {
-		Log.i("click", "${item.name} selected")
-	}
 }
