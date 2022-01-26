@@ -3,6 +3,7 @@ package ru.sibsutis.table.database.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import ru.sibsutis.table.database.converters.DayConverter
 import ru.sibsutis.table.database.converters.LessonTypeConverter
 import ru.sibsutis.table.database.converters.WeekTypeConverter
 import ru.sibsutis.table.database.dao.GroupDao
@@ -26,7 +27,8 @@ import ru.sibsutis.table.database.entities.TeacherEntity
 )
 @TypeConverters(
 	LessonTypeConverter::class,
-	WeekTypeConverter::class
+	WeekTypeConverter::class,
+	DayConverter::class,
 )
 abstract class TableDatabase : RoomDatabase() {
 

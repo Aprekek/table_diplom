@@ -6,5 +6,8 @@ import ru.sibsutis.table.shared.lesson.LessonType
 class LessonTypeConverter {
 
 	@TypeConverter
-	operator fun invoke(lessonType: LessonType): Int = lessonType.value
+	fun lessonToInt(lessonType: LessonType): Int = lessonType.value
+
+	@TypeConverter
+	fun intToLesson(value: Int): LessonType = LessonType.values()[value]
 }

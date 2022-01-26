@@ -6,5 +6,8 @@ import ru.sibsutis.table.shared.lesson.WeekType
 class WeekTypeConverter {
 
 	@TypeConverter
-	operator fun invoke(weekType: WeekType): Int = weekType.value
+	fun weekTypeToInt(weekType: WeekType): Int = weekType.value
+
+	@TypeConverter
+	fun intToWeekType(value: Int): WeekType = WeekType.values()[value]
 }
