@@ -6,6 +6,7 @@ import androidx.room.TypeConverters
 import ru.sibsutis.table.database.converters.LessonTypeConverter
 import ru.sibsutis.table.database.converters.WeekTypeConverter
 import ru.sibsutis.table.database.dao.GroupDao
+import ru.sibsutis.table.database.dao.LessonDao
 import ru.sibsutis.table.database.dao.RecentlyWatchedGroupsDao
 import ru.sibsutis.table.database.dao.TeachersListDao
 import ru.sibsutis.table.database.entities.GroupEntity
@@ -37,4 +38,5 @@ abstract class TableDatabase : RoomDatabase() {
 	abstract fun groupDao(): GroupDao
 	abstract fun recentlyWatchedGroupsDao(): RecentlyWatchedGroupsDao
 	abstract fun teachersListDao(): TeachersListDao
+	abstract fun lessonDao(): LessonDao
 }
