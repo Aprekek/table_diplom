@@ -13,5 +13,7 @@ class TeachersListDatasourceImpl(
 
 	override suspend fun getRemoteTeachersData(): List<TeachersListModel> = api.getTeachersList()
 
+	override suspend fun replaceOldDataWithNewData(remoteData: List<TeacherEntity>) = dao.replaceOldDataWithNewData(remoteData)
+
 	override fun getTeachersList(searchText: String): Flow<List<TeacherEntity>> = dao.getTeachersList(searchText)
 }

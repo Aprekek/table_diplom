@@ -4,7 +4,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
-import ru.sibsutis.table.database.dao.TeachersListDao
 import ru.sibsutis.table.features.teachers.listscreen.data.datasource.TeachersListDatasource
 import ru.sibsutis.table.features.teachers.listscreen.data.mapper.toDatabaseEntity
 import ru.sibsutis.table.features.teachers.listscreen.data.mapper.toEntityList
@@ -13,16 +12,15 @@ import ru.sibsutis.table.features.teachers.listscreen.domain.repository.Teachers
 
 class TeachersListRepositoryImpl(
 	private val datasource: TeachersListDatasource,
-	private val dao: TeachersListDao
 ) : TeachersListRepository {
 
 	override suspend fun updateLocalStorageWithRemoteData() {
 		withContext(Dispatchers.IO) {
 			val remoteData = datasource.getRemoteTeachersData().toDatabaseEntity()
-			dao.replaceOldDataWithNewData(remoteData)
+			datasource.replaceOldDataWithNewData(remoteData)
 		}
 	}
 
 	override fun getTeachersList(searchText: String): Flow<List<Teacher>> =
-		dao.getTeachersList(searchText).toEntityList().flowOn(Dispatchers.IO)
+		datasource.getTeachersList(searchText).toEntityList().flowOn(Dispatchers.IO)
 }
