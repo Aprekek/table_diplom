@@ -1,0 +1,17 @@
+apply plugin: Plugins.ANDROID_LIBRARY
+apply plugin: Plugins.KOTLIN_ANDROID
+
+apply from: "$rootDir/build_system/androidLibrary.gradle"
+
+dependencies {
+
+	implementation Dependencies.KOIN_CORE
+	implementation Dependencies.COMPOSE.MATERIAL
+	implementation Dependencies.MOSHI
+	implementation Dependencies.RETROFIT
+
+	implementation project(':mockApiServer')
+	implementation project(":network")
+	implementation project(":database")
+	implementation project(":shared:lesson")
+}

@@ -10,6 +10,7 @@ import ru.sibsutis.table.database.di.databaseModule
 import ru.sibsutis.table.di.appModule
 import ru.sibsutis.table.feature.groups.changegroup.di.changeGroupModule
 import ru.sibsutis.table.feature.groups.startingscreen.di.startingScreenModule
+import ru.sibsutis.table.feature.timetable.di.timetableModule
 import ru.sibsutis.table.features.teachers.listscreen.di.teachersListScreenModule
 import ru.sibsutis.table.navigation.di.navigationModule
 import ru.sibsutis.table.preferences.di.preferencesModule
@@ -35,6 +36,7 @@ class App : Application() {
 				groupDataModule,
 				changeGroupModule,
 				teachersListScreenModule,
+				timetableModule,
 			)
 		}
 	}

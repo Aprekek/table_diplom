@@ -20,4 +20,5 @@ val databaseModule = module {
 	factory { get<TableDatabase>().groupDao() }
 	factory { get<TableDatabase>().recentlyWatchedGroupsDao() }
 	factory { get<TableDatabase>().teachersListDao() }
+	factory { get<TableDatabase>().lessonDao() }
 }
