@@ -15,8 +15,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -31,7 +35,11 @@ fun SearchAppBar(
 	onTextChange: (String) -> Unit,
 	onCloseClicked: () -> Unit,
 	onSearchClicked: (String) -> Unit,
+	focusRequired: Boolean = false
 ) {
+
+	val focusRequester = remember { FocusRequester() }
+
 	Surface(
 		modifier = Modifier
 			.fillMaxWidth()
@@ -40,7 +48,9 @@ fun SearchAppBar(
 		color = MaterialTheme.colors.primary
 	) {
 		TextField(
-			modifier = Modifier.fillMaxWidth(),
+			modifier = Modifier
+				.fillMaxWidth()
+				.focusRequester(focusRequester),
 			value = text,
 			onValueChange = {
 				onTextChange(it)
@@ -97,6 +107,12 @@ fun SearchAppBar(
 				backgroundColor = Color.Transparent,
 				cursorColor = Color.White.copy(alpha = ContentAlpha.medium)
 			))
+
+		LaunchedEffect(focusRequired) {
+			if (focusRequired) {
+				focusRequester.requestFocus()
+			}
+		}
 	}
 }
 

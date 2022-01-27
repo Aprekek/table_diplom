@@ -55,6 +55,7 @@ class TeachersListViewModel(
 
 	fun updateSearchTextState(newValue: String) {
 		_searchTextState.value = newValue
+		search(newValue)
 	}
 
 	fun search(searchedText: String) {
