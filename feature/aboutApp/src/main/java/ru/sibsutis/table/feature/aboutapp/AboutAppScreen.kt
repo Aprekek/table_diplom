@@ -14,7 +14,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import ru.sibsutis.table.navigation.screens.settings.AboutAppContent
+import ru.sibsutis.table.navigation.screens.aboutApp.AboutAppContent
 import ru.sibsutis.table.shared.ui.ToolbarDT
 
 object AboutAppScreen : AboutAppContent {

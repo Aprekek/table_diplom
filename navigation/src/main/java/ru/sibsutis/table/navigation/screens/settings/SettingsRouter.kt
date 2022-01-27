@@ -1,6 +1,7 @@
 package ru.sibsutis.table.navigation.screens.settings
 
 import androidx.navigation.NavController
+import ru.sibsutis.table.navigation.screens.aboutApp.AboutAppContent
 import ru.sibsutis.table.navigation.screens.changegroup.ChangeGroupNavigationContent
 
 class SettingsRouter(

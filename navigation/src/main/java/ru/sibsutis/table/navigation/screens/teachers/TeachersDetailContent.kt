@@ -17,7 +17,7 @@ interface TeachersDetailContent {
 
 		override val path = "teachers/{${Arguments.TEACHER_NAME}}"
 
-		fun createPath(teacherName:String): String{
+		fun createPath(teacherName: String): String {
 			return "teachers/${teacherName}"
 		}
 	}
