@@ -7,20 +7,20 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import ru.sibsutis.table.feature.teachers.detailsscreen.domain.usecase.GetTeacherUseCase
 
-class DetailsViewModel(
+class TeacherDetailsViewModel(
 	private val getTeacherUseCase: GetTeacherUseCase,
 	private val name: String
 ) : ViewModel() {
 
-	private val _state = MutableStateFlow<DetailsState>(DetailsState.Initialize)
+	private val _state = MutableStateFlow<TeacherDetailsState>(TeacherDetailsState.Initialize)
 	val state = _state.asStateFlow()
 
 	fun loadInfo() {
 
-		_state.value = DetailsState.Loading
+		_state.value = TeacherDetailsState.Loading
 		viewModelScope.launch {
 			val content = getTeacherUseCase(name)
-			_state.value = DetailsState.Content(content)
+			_state.value = TeacherDetailsState.Content(content)
 		}
 	}
 }

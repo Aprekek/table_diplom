@@ -22,5 +22,5 @@ interface TeachersDetailContent {
 		}
 	}
 
-	fun route(navGraphBuilder: NavGraphBuilder, navController: NavController, teacherName: String)
+	fun route(navGraphBuilder: NavGraphBuilder, navController: NavController)
 }

@@ -28,11 +28,11 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.skydoves.landscapist.glide.GlideImage
 import ru.sibsutis.table.feature.teachers.detailsscreen.R
-import ru.sibsutis.table.feature.teachers.detailsscreen.presentation.DetailsState
+import ru.sibsutis.table.feature.teachers.detailsscreen.presentation.TeacherDetailsState
 
 @Composable
 fun MainContent(
-	state: DetailsState.Content
+	state: TeacherDetailsState.Content
 ) {
 
 	val context = LocalContext.current
@@ -99,9 +99,7 @@ fun MainContent(
 				top.linkTo(phone.bottom)
 			},
 		) {
-			Text(
-				text = state.teacher.phone
-			)
+			Text(text = state.teacher.phone)
 		}
 		Text(
 			modifier = Modifier.constrainAs(email) {
