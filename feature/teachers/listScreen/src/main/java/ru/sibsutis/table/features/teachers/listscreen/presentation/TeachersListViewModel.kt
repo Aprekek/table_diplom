@@ -24,6 +24,9 @@ class TeachersListViewModel(
 
 	private lateinit var router: TeacherRouter
 
+	var firstElement: Int = 0
+	var offsetElement: Int = 0
+
 	private val _state = MutableStateFlow<TeachersListState>(TeachersListState.Initialize)
 	val state = _state.asStateFlow()
 
@@ -82,6 +85,11 @@ class TeachersListViewModel(
 				_state.value = TeachersListState.Content(groupedList)
 			}
 			.launchIn(viewModelScope)
+	}
+
+	fun onLeavingComposition(firstElement: Int, offsetElement: Int) {
+		this.firstElement = firstElement
+		this.offsetElement = offsetElement
 	}
 
 	fun navigateToDetailsScreen(name: String) {
