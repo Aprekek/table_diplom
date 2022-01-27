@@ -1,5 +1,6 @@
 ext.Versions = [
-	KOTLIN                   : "1.6.0",
+	KOTLIN                   : "1.6.10",
+	COROUTINES               : "1.6.0",
 	GRADLE                   : '7.1.0',
 	CORE                     : "1.7.0",
 	APP_COMPAT               : "1.4.1",
@@ -13,9 +14,9 @@ ext.Versions = [
 	MATERIAL                 : "1.5.0",
 	MOSHI                    : "1.13.0",
 	COMPOSE_ACTIVITY         : "1.4.0",
-	COMPOSE_COMMON           : "1.1.0-rc01",
+	COMPOSE_COMMON           : "1.1.0-rc03",
 	COMPOSE_CONSTRAINT_LAYOUT: "1.0.0",
 	COMPOSE_VIEWMODEL        : "2.4.0",
-	COMPOSE_NAVIGATION       : "2.4.0-rc01",
+	COMPOSE_NAVIGATION       : "2.4.0",
 	GLIDE                    : "1.4.5"
 ]
