@@ -6,6 +6,7 @@ import androidx.navigation.compose.rememberNavController
 import ru.sibsutis.table.feature.aboutapp.AboutAppScreen
 import ru.sibsutis.table.feature.groups.changegroup.ui.ChangeGroupScreen
 import ru.sibsutis.table.feature.groups.startingscreen.ui.StartingGroupMenuScreen
+import ru.sibsutis.table.feature.teachers.detailsscreen.ui.TeacherDetailsScreen
 import ru.sibsutis.table.features.mainbottomnavigationscreen.ui.MainBottomNavigationScreen
 
 @Composable
@@ -19,5 +20,6 @@ fun GlobalController(startDestination: String, currentGroup: String = "") {
 		ChangeGroupScreen.route(this, navController)
 		MainBottomNavigationScreen.route(this, navController, currentGroup)
 		AboutAppScreen.route(this, navController)
+		TeacherDetailsScreen.route(this, navController)
 	}
 }

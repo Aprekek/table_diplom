@@ -12,15 +12,17 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import ru.sibsutis.table.features.teachers.listscreen.domain.entity.Teacher
 import ru.sibsutis.table.features.teachers.listscreen.domain.usecase.GetTeachersListUseCase
 import ru.sibsutis.table.features.teachers.listscreen.domain.usecase.UpdateLocalTeachersStorageUseCase
 import ru.sibsutis.table.features.teachers.listscreen.presentation.SearchWidgetState.CLOSED
+import ru.sibsutis.table.navigation.screens.teachers.TeacherRouter
 
 class TeachersListViewModel(
 	private val updateLocalTeachersStorageUseCase: UpdateLocalTeachersStorageUseCase,
 	private val getTeachersListUseCase: GetTeachersListUseCase
 ) : ViewModel() {
+
+	private lateinit var router: TeacherRouter
 
 	private val _state = MutableStateFlow<TeachersListState>(TeachersListState.Initialize)
 	val state = _state.asStateFlow()
@@ -38,6 +40,10 @@ class TeachersListViewModel(
 	fun initialize() {
 		updateDatabaseWithRemoteData()
 		getTeachers()
+	}
+
+	fun setRouter(router: TeacherRouter) {
+		this.router = router
 	}
 
 	fun updateSearchWidgetState(newValue: SearchWidgetState) {
@@ -78,7 +84,7 @@ class TeachersListViewModel(
 			.launchIn(viewModelScope)
 	}
 
-	fun navigateToSelectedTeacher(item: Teacher) {
-		Log.i("click", "${item.name} selected")
+	fun navigateToDetailsScreen(name: String){
+		router.navigateToDetails(name)
 	}
 }

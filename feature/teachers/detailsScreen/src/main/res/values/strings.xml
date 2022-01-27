@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="details_name">ФИО</string>
+	<string name="details_email">Почта</string>
+	<string name="details_phone">Телефон</string>
+	<string name="details_address">Кабинет</string>
+	<string name="details_cathedra">Кафедра</string>
+	<string name="details_copy">Скопировано</string>
+</resources>
