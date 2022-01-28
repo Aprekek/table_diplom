@@ -13,7 +13,8 @@ interface LessonDao {
 	@Insert(onConflict = OnConflictStrategy.REPLACE)
 	suspend fun insertLessons(lessons: List<LessonEntity>)
 
-	@Query("SELECT * FROM lessons_table WHERE week = :week")
+	//	2 is equals to WeekType.BOTH
+	@Query("SELECT * FROM lessons_table WHERE week = :week OR week = 2")
 	suspend fun getLessons(
 		week: WeekType
 	): List<LessonEntity>

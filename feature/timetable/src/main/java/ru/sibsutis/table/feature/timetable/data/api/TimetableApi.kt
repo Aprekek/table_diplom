@@ -6,7 +6,7 @@ import ru.sibsutis.table.feature.timetable.data.model.LessonModel
 
 interface TimetableApi {
 
-	@GET("lessons/{group}")
+	@GET("/lessons/{group}")
 	suspend fun getLessonsForGroup(
 		@Path("group") group: String
 	): List<LessonModel>
