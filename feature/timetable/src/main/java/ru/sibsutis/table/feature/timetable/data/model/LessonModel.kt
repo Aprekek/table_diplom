@@ -1,16 +1,16 @@
 package ru.sibsutis.table.feature.timetable.data.model
 
-import ru.sibsutis.table.shared.lesson.LessonType
-import ru.sibsutis.table.shared.lesson.WeekType
+import com.squareup.moshi.Json
 
 data class LessonModel(
-	val id: Long = 0,
 	val name: String,
 	val day: String,
+	@Json(name = "start_time")
 	val startTime: String,
+	@Json(name = "end_time")
 	val endTime: String,
-	val teacher: Long,
+	val teacher: String,
 	val address: String,
-	val type: LessonType,
-	val week: WeekType
+	val type: Int,
+	val week: Int
 )

@@ -10,7 +10,7 @@ data class Lesson(
 	val day: Day,
 	val startTime: String,
 	val endTime: String,
-	val teacher: Long,
+	val teacher: String,
 	val address: String,
 	val type: LessonType,
 	val week: WeekType

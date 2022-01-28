@@ -18,7 +18,7 @@ data class LessonEntity(
 	val startTime: String,
 	val endTime: String,
 	@ColumnInfo(index = true)
-	val teacher: Long,
+	val teacher: String,
 	val address: String,
 	val type: LessonType,
 	val week: WeekType

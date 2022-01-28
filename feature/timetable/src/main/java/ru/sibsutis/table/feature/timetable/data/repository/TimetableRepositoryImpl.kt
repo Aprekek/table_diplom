@@ -8,7 +8,6 @@ import ru.sibsutis.table.feature.timetable.data.mappers.toDatabaseEntity
 import ru.sibsutis.table.feature.timetable.data.mappers.toEntity
 import ru.sibsutis.table.feature.timetable.domain.entities.Lesson
 import ru.sibsutis.table.feature.timetable.domain.repository.TimetableRepository
-import ru.sibsutis.table.shared.lesson.Day
 import ru.sibsutis.table.shared.lesson.WeekType
 
 class TimetableRepositoryImpl(
@@ -17,7 +16,7 @@ class TimetableRepositoryImpl(
 
 	override suspend fun updateTimetableStorageWithRemoteData(group: String) {
 		withContext(Dispatchers.IO) {
-			val lessons = dataSource.getLessonsForGroupRemote(group).toDatabaseEntity(Day.values())
+			val lessons = dataSource.getLessonsForGroupRemote(group.lowercase()).toDatabaseEntity()
 			dataSource.updateLocalLessonsStorage(lessons)
 		}
 	}
