@@ -25,10 +25,13 @@ fun TeacherItem(
 	Box(
 		modifier = modifier
 			.fillMaxWidth()
-			.padding(8.dp)
 			.clickable { onTeacherClick(teacher) }
+			.padding(8.dp)
 	) {
-		Text(text = teacher.name, modifier = Modifier.align(Alignment.TopStart))
+		Text(
+			modifier = Modifier.align(Alignment.TopStart),
+			text = teacher.name
+		)
 		Column(
 			modifier = modifier.align(Alignment.TopEnd),
 			horizontalAlignment = Alignment.End

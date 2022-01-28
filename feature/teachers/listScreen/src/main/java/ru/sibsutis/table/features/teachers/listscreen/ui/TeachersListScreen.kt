@@ -73,17 +73,37 @@ object TeachersListScreen : TeachersContent {
 
 				is TeachersListState.Error   -> ErrorScreen(reload = { viewModel.initialize() })
 
-				is TeachersListState.Content -> ContentScreen(state as TeachersListState.Content) { viewModel.navigateToDetailsScreen(it.name) }
+				is TeachersListState.Content -> ContentScreen(
+					state = state as TeachersListState.Content,
+					firstElement = viewModel.firstElement,
+					offsetElement = viewModel.offsetElement,
+					onLeavingComposition = { firstElement, offsetElement ->
+						viewModel.onLeavingComposition(firstElement, offsetElement)
+					},
+					onClick = { viewModel.navigateToDetailsScreen(it.name) }
+				)
 			}
 		}
 	}
 
 	@Composable
-	private fun ContentScreen(state: TeachersListState.Content, onClick: (Teacher) -> Unit) {
+	private fun ContentScreen(
+		state: TeachersListState.Content,
+		firstElement: Int,
+		offsetElement: Int,
+		onLeavingComposition: (firstElement: Int, offsetElement: Int) -> Unit,
+		onClick: (Teacher) -> Unit
+	) {
 		if (state.teachersList.isEmpty()) {
 			EmptyScreen()
 		} else {
-			TeachersList(teachers = state.teachersList, onTeacherClick = onClick)
+			TeachersList(
+				teachers = state.teachersList,
+				firstElement = firstElement,
+				offsetElement = offsetElement,
+				onLeavingComposition = onLeavingComposition,
+				onTeacherClick = onClick
+			)
 		}
 	}
 }

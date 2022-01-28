@@ -26,10 +26,7 @@ val teachersListScreenModule = module {
 	}
 
 	factory<TeachersListRepository> {
-		TeachersListRepositoryImpl(
-			datasource = get(),
-			dao = get()
-		)
+		TeachersListRepositoryImpl(datasource = get())
 	}
 
 	factory { GetTeachersListUseCase(repository = get()) }

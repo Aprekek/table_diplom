@@ -31,7 +31,8 @@ fun MainAppBar(
 				text = searchTextState,
 				onTextChange = onTextChange,
 				onCloseClicked = onCloseClicked,
-				onSearchClicked = onSearchClicked
+				onSearchClicked = onSearchClicked,
+				focusRequired = true
 			)
 		}
 	}
