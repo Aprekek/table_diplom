@@ -11,4 +11,6 @@ interface GroupDatasource {
 	fun getGroups(filter: String): Flow<List<GroupEntity>>
 
 	suspend fun isGroupExists(filter: String): String?
+
+	suspend fun insertGroups(groups: List<GroupEntity>)
 }
