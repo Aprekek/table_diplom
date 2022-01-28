@@ -1,4 +1,4 @@
-package ru.sibsutis.table.navigation.screens.settings
+package ru.sibsutis.table.navigation.screens.aboutApp
 
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder

@@ -84,7 +84,7 @@ class TeachersListViewModel(
 			.launchIn(viewModelScope)
 	}
 
-	fun navigateToDetailsScreen(name: String){
+	fun navigateToDetailsScreen(name: String) {
 		router.navigateToDetails(name)
 	}
 }
