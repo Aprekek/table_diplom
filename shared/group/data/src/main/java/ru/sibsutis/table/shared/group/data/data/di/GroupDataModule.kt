@@ -23,8 +23,7 @@ val groupDataModule = module {
 
 	factory<GroupMenuRepository> {
 		GroupMenuRepositoryImpl(
-			datasource = get(),
-			dao = get()
+			datasource = get()
 		)
 	}
 }

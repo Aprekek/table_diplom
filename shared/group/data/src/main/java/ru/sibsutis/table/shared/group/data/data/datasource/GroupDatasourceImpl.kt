@@ -16,4 +16,6 @@ class GroupDatasourceImpl(
 	override fun getGroups(filter: String): Flow<List<GroupEntity>> = dao.getGroupsList(filter)
 
 	override suspend fun isGroupExists(filter: String) = dao.isGroupExist(filter)
+
+	override suspend fun insertGroups(groups: List<GroupEntity>) = dao.insertGroups(groups)
 }
