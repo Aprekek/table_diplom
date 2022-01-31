@@ -3,7 +3,6 @@ package ru.sibsutis.table.shared.group.presentation.presentation
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -12,7 +11,6 @@ import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import ru.sibsutis.table.shared.group.domain.entities.Group
 import ru.sibsutis.table.shared.group.domain.usecases.GetGroupsListUseCase
 import ru.sibsutis.table.shared.group.domain.usecases.IsGroupExistUseCase
@@ -76,7 +74,7 @@ abstract class BaseGroupMenuViewModel(
 		checkIsGroupExists()
 	}
 
-	protected abstract fun onGroupExistingAction()
+	protected abstract suspend fun onGroupExistingAction()
 
 	protected fun checkIsGroupExists() {
 		viewModelScope.launch {
@@ -84,9 +82,7 @@ abstract class BaseGroupMenuViewModel(
 				_state.value = GroupMenuScreenState.NoGroupError(_state.value.isSuggestionsExpanded)
 			else {
 				updateCurrentGroupInPreferencesUseCase(_selectedGroup.value)
-				withContext(Dispatchers.Main) {
-					onGroupExistingAction()
-				}
+				onGroupExistingAction()
 			}
 		}
 	}
