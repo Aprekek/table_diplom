@@ -1,7 +1,7 @@
 package ru.sibsutis.table.database.converters
 
 import androidx.room.TypeConverter
-import ru.sibsutis.table.shared.lesson.LessonType
+import ru.sibsutis.table.shared.lesson.domain.entities.LessonType
 
 class LessonTypeConverter {
 

@@ -2,7 +2,7 @@ package ru.sibsutis.table.feature.timetable.data.datasource
 
 import ru.sibsutis.table.database.entities.LessonEntity
 import ru.sibsutis.table.feature.timetable.data.model.LessonModel
-import ru.sibsutis.table.shared.lesson.WeekType
+import ru.sibsutis.table.shared.lesson.domain.entities.WeekType
 
 interface TimetableDataSource {
 

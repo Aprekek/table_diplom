@@ -8,7 +8,7 @@ import ru.sibsutis.table.feature.timetable.data.mappers.toDatabaseEntity
 import ru.sibsutis.table.feature.timetable.data.mappers.toEntity
 import ru.sibsutis.table.feature.timetable.domain.entities.Lesson
 import ru.sibsutis.table.feature.timetable.domain.repository.TimetableRepository
-import ru.sibsutis.table.shared.lesson.WeekType
+import ru.sibsutis.table.shared.lesson.domain.entities.WeekType
 
 class TimetableRepositoryImpl(
 	private val dataSource: TimetableDataSource

@@ -19,7 +19,7 @@ dependencies {
 	implementation project(':mockApiServer')
 	implementation project(":network")
 	implementation project(":database")
-	implementation project(":shared:lesson")
+	implementation project(':shared:lesson:domain')
 	implementation project(":shared:core")
 	implementation project(":shared:ui")
 }

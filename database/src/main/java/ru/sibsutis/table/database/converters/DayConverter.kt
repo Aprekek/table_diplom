@@ -1,7 +1,7 @@
 package ru.sibsutis.table.database.converters
 
 import androidx.room.TypeConverter
-import ru.sibsutis.table.shared.lesson.Day
+import ru.sibsutis.table.shared.lesson.domain.entities.Day
 
 class DayConverter {
 

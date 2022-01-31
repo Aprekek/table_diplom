@@ -12,6 +12,5 @@ dependencies {
 	kapt Dependencies.SQLITE
 
 	implementation Dependencies.KOIN_ANDROID
-
-	implementation project(":shared:lesson")
+	implementation project(':shared:lesson:domain')
 }
