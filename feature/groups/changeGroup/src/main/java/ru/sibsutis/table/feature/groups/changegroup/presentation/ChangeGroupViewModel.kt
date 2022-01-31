@@ -1,7 +1,9 @@
 package ru.sibsutis.table.feature.groups.changegroup.presentation
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -14,6 +16,7 @@ import ru.sibsutis.table.shared.group.domain.usecases.IsGroupExistUseCase
 import ru.sibsutis.table.shared.group.domain.usecases.UpdateCurrentGroupInPreferencesUseCase
 import ru.sibsutis.table.shared.group.domain.usecases.UpdateLocalGroupStorageUseCase
 import ru.sibsutis.table.shared.group.presentation.presentation.BaseGroupMenuViewModel
+import ru.sibsutis.table.shared.lesson.domain.usecases.CleanLessonsStorageUseCase
 
 class ChangeGroupViewModel(
 	getGroupsListUseCase: GetGroupsListUseCase,
@@ -22,6 +25,7 @@ class ChangeGroupViewModel(
 	updateCurrentGroupInPreferencesUseCase: UpdateCurrentGroupInPreferencesUseCase,
 	private val getRecentlyWatchedGroupsUseCase: GetRecentlyWatchedGroupsUseCase,
 	private val addGroupToRecentlyWatchedUseCase: AddGroupToRecentlyWatchedUseCase,
+	private val cleanLessonsStorageUseCase: CleanLessonsStorageUseCase,
 	private val currentlyActiveGroup: String
 ) : BaseGroupMenuViewModel(
 	getGroupsListUseCase,
@@ -53,7 +57,16 @@ class ChangeGroupViewModel(
 	}
 
 	override suspend fun onGroupExistingAction() {
-		addGroupToRecentlyWatchedUseCase(_selectedGroup.value)
+		coroutineScope {
+			launch {
+				addGroupToRecentlyWatchedUseCase(_selectedGroup.value)
+				Log.d("DT","recently added")
+			}
+			launch {
+				cleanLessonsStorageUseCase()
+				Log.d("DT","cleaned")
+			}
+		}
 		withContext(Dispatchers.Main) {
 			router.navigateToMainBottomNavigation(_selectedGroup.value)
 		}

@@ -20,4 +20,5 @@ dependencies {
 	implementation project(":shared:group:domain")
 	implementation project(":shared:group:data")
 	implementation project(":shared:group:presentation")
+	implementation project(":shared:lesson:domain")
 }
