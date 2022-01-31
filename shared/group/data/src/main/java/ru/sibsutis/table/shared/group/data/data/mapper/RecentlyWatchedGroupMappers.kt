@@ -1,4 +1,4 @@
-package ru.sibsutis.table.feature.groups.changegroup.data.mappers
+package ru.sibsutis.table.shared.group.data.data.mapper
 
 import ru.sibsutis.table.database.entities.RecentlyWatchedGroupEntity
 import ru.sibsutis.table.shared.group.domain.entities.RecentlyWatchedGroup
