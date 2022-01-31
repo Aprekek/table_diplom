@@ -17,6 +17,7 @@ import ru.sibsutis.table.navigation.di.navigationModule
 import ru.sibsutis.table.preferences.di.preferencesModule
 import ru.sibsutis.table.shared.group.data.data.di.groupDataModule
 import ru.sibsutis.table.shared.group.domain.di.groupDomainModule
+import ru.sibsutis.table.shared.lesson.domain.di.lessonsDomainModule
 
 class App : Application() {
 
@@ -39,6 +40,7 @@ class App : Application() {
 				teachersListScreenModule,
 				timetableModule,
 				teacherDetailsModule,
+				lessonsDomainModule,
 			)
 		}
 	}
