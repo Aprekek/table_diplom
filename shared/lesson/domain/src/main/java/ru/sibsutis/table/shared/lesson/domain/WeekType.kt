@@ -1,4 +1,4 @@
-package ru.sibsutis.table.shared.lesson
+package ru.sibsutis.table.shared.lesson.domain
 
 enum class WeekType(val value: Int) {
 	FIRST(0),

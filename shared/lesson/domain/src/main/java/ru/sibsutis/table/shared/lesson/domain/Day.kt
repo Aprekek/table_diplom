@@ -1,4 +1,4 @@
-package ru.sibsutis.table.shared.lesson
+package ru.sibsutis.table.shared.lesson.domain
 
 enum class Day(val value: Int, val localizedValue: String) {
 	Monday(value = 0, localizedValue = "Понедельник"),

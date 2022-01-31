@@ -12,7 +12,7 @@ import ru.sibsutis.table.feature.timetable.domain.entities.Lesson
 import ru.sibsutis.table.feature.timetable.domain.usecases.GetTimetableUseCase
 import ru.sibsutis.table.feature.timetable.domain.usecases.UpdateTimetableLocalStorageUseCase
 import ru.sibsutis.table.shared.core.DateUtils
-import ru.sibsutis.table.shared.lesson.WeekType
+import ru.sibsutis.table.shared.lesson.domain.WeekType
 
 class TimetableViewModel(
 	private val group: String,

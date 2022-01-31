@@ -5,7 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import ru.sibsutis.table.database.entities.LessonEntity
-import ru.sibsutis.table.shared.lesson.WeekType
+import ru.sibsutis.table.shared.lesson.domain.WeekType
 
 @Dao
 interface LessonDao {

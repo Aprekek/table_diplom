@@ -1,7 +1,7 @@
 package ru.sibsutis.table.feature.timetable.domain.usecases
 
 import ru.sibsutis.table.feature.timetable.domain.repository.TimetableRepository
-import ru.sibsutis.table.shared.lesson.WeekType
+import ru.sibsutis.table.shared.lesson.domain.WeekType
 
 class GetTimetableUseCase(
 	private val repository: TimetableRepository

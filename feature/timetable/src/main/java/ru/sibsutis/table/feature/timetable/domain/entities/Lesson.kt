@@ -1,8 +1,8 @@
 package ru.sibsutis.table.feature.timetable.domain.entities
 
-import ru.sibsutis.table.shared.lesson.Day
-import ru.sibsutis.table.shared.lesson.LessonType
-import ru.sibsutis.table.shared.lesson.WeekType
+import ru.sibsutis.table.shared.lesson.domain.Day
+import ru.sibsutis.table.shared.lesson.domain.LessonType
+import ru.sibsutis.table.shared.lesson.domain.WeekType
 
 data class Lesson(
 	val id: Long = 0,

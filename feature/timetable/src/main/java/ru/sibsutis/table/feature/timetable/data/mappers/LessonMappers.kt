@@ -3,9 +3,9 @@ package ru.sibsutis.table.feature.timetable.data.mappers
 import ru.sibsutis.table.database.entities.LessonEntity
 import ru.sibsutis.table.feature.timetable.data.model.LessonModel
 import ru.sibsutis.table.feature.timetable.domain.entities.Lesson
-import ru.sibsutis.table.shared.lesson.Day
-import ru.sibsutis.table.shared.lesson.LessonType
-import ru.sibsutis.table.shared.lesson.WeekType
+import ru.sibsutis.table.shared.lesson.domain.Day
+import ru.sibsutis.table.shared.lesson.domain.LessonType
+import ru.sibsutis.table.shared.lesson.domain.WeekType
 
 fun LessonModel.toDatabaseEntity(
 	daysTypes: Array<Day>,

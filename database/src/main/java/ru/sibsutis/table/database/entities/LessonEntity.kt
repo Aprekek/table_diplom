@@ -3,9 +3,9 @@ package ru.sibsutis.table.database.entities
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import ru.sibsutis.table.shared.lesson.Day
-import ru.sibsutis.table.shared.lesson.LessonType
-import ru.sibsutis.table.shared.lesson.WeekType
+import ru.sibsutis.table.shared.lesson.domain.Day
+import ru.sibsutis.table.shared.lesson.domain.LessonType
+import ru.sibsutis.table.shared.lesson.domain.WeekType
 
 @Entity(
 	tableName = "lessons_table"

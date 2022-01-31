@@ -1,7 +1,7 @@
 package ru.sibsutis.table.feature.timetable.domain.repository
 
 import ru.sibsutis.table.feature.timetable.domain.entities.Lesson
-import ru.sibsutis.table.shared.lesson.WeekType
+import ru.sibsutis.table.shared.lesson.domain.WeekType
 
 interface TimetableRepository {
 

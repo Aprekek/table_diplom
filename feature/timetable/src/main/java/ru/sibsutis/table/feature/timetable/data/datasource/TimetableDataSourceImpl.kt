@@ -3,7 +3,7 @@ package ru.sibsutis.table.feature.timetable.data.datasource
 import ru.sibsutis.table.database.dao.LessonDao
 import ru.sibsutis.table.database.entities.LessonEntity
 import ru.sibsutis.table.feature.timetable.data.api.TimetableApi
-import ru.sibsutis.table.shared.lesson.WeekType
+import ru.sibsutis.table.shared.lesson.domain.WeekType
 
 class TimetableDataSourceImpl(
 	private val api: TimetableApi,
