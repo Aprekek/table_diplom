@@ -1,10 +1,10 @@
-package ru.sibsutis.table.feature.groups.changegroup.data.repository
+package ru.sibsutis.table.shared.group.data.data.repository
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import ru.sibsutis.table.database.entities.RecentlyWatchedGroupEntity
-import ru.sibsutis.table.feature.groups.changegroup.data.datasource.RecentlyWatchedGroupsDataSource
-import ru.sibsutis.table.feature.groups.changegroup.domain.repository.RecentlyWatchedGroupsRepository
+import ru.sibsutis.table.shared.group.data.data.datasource.RecentlyWatchedGroupsDataSource
+import ru.sibsutis.table.shared.group.domain.repository.RecentlyWatchedGroupsRepository
 
 class RecentlyWatchedGroupsRepositoryImpl(
 	private val dataSource: RecentlyWatchedGroupsDataSource

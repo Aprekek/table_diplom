@@ -1,13 +1,15 @@
 package ru.sibsutis.table.feature.groups.changegroup.presentation
 
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import ru.sibsutis.table.feature.groups.changegroup.domain.usecase.AddGroupToRecentlyWatchedUseCase
-import ru.sibsutis.table.feature.groups.changegroup.domain.usecase.GetRecentlyWatchedGroupsUseCase
+import kotlinx.coroutines.withContext
 import ru.sibsutis.table.navigation.screens.changegroup.ChangeGroupNavigationRouter
+import ru.sibsutis.table.shared.group.domain.usecases.AddGroupToRecentlyWatchedUseCase
 import ru.sibsutis.table.shared.group.domain.usecases.GetGroupsListUseCase
+import ru.sibsutis.table.shared.group.domain.usecases.GetRecentlyWatchedGroupsUseCase
 import ru.sibsutis.table.shared.group.domain.usecases.IsGroupExistUseCase
 import ru.sibsutis.table.shared.group.domain.usecases.UpdateCurrentGroupInPreferencesUseCase
 import ru.sibsutis.table.shared.group.domain.usecases.UpdateLocalGroupStorageUseCase
@@ -44,17 +46,17 @@ class ChangeGroupViewModel(
 
 	override fun onSubmitGroupAction() {
 		if (_selectedGroup.value != currentlyActiveGroup) {
-			viewModelScope.launch {
-				addGroupToRecentlyWatchedUseCase(_selectedGroup.value)
-			}
 			super.onSubmitGroupAction()
 		} else {
 			router.popToMainBottomNavigation()
 		}
 	}
 
-	override fun onGroupExistingAction() {
-		router.navigateToMainBottomNavigation(_selectedGroup.value)
+	override suspend fun onGroupExistingAction() {
+		addGroupToRecentlyWatchedUseCase(_selectedGroup.value)
+		withContext(Dispatchers.Main) {
+			router.navigateToMainBottomNavigation(_selectedGroup.value)
+		}
 	}
 
 	private fun getRecentlyWatchedGroups() {

@@ -1,4 +1,4 @@
-package ru.sibsutis.table.feature.groups.changegroup.data.datasource
+package ru.sibsutis.table.shared.group.data.data.datasource
 
 import ru.sibsutis.table.database.entities.RecentlyWatchedGroupEntity
 

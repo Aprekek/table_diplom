@@ -1,6 +1,6 @@
-package ru.sibsutis.table.feature.groups.changegroup.domain.usecase
+package ru.sibsutis.table.shared.group.domain.usecases
 
-import ru.sibsutis.table.feature.groups.changegroup.domain.repository.RecentlyWatchedGroupsRepository
+import ru.sibsutis.table.shared.group.domain.repository.RecentlyWatchedGroupsRepository
 
 class GetRecentlyWatchedGroupsUseCase(
 	private val repository: RecentlyWatchedGroupsRepository

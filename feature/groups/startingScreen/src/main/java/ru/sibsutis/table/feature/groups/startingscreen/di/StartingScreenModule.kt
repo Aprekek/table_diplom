@@ -10,7 +10,8 @@ val startingScreenModule = module {
 			getGroupsListUseCase = get(),
 			updateLocalGroupStorageUseCase = get(),
 			isGroupExistUseCase = get(),
-			updateCurrentGroupInPreferencesUseCase = get()
+			updateCurrentGroupInPreferencesUseCase = get(),
+			addGroupToRecentlyWatchedUseCase = get()
 		).apply { initialize() }
 	}
 }
