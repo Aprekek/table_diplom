@@ -27,14 +27,16 @@ interface RecentlyWatchedGroupsDao {
 		val maxGroupSize = 4
 
 		val groups = getAllGroups()
-		if (groups.size >= maxGroupSize) {
-			val lessImportantGroup = groups.last()
-			deleteLessImpAndInsertNewGroups(
-				toDelete = lessImportantGroup,
-				toInsert = newGroup
-			)
-		} else {
-			insertGroup(newGroup)
+		if (groups.find { it.groupName == newGroup.groupName } == null) {
+			if (groups.size >= maxGroupSize) {
+				val lessImportantGroup = groups.last()
+				deleteLessImpAndInsertNewGroups(
+					toDelete = lessImportantGroup,
+					toInsert = newGroup
+				)
+			} else {
+				insertGroup(newGroup)
+			}
 		}
 	}
 
