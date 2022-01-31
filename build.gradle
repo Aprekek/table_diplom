@@ -26,6 +26,7 @@ allprojects {
 			freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
 			freeCompilerArgs += "-Xopt-in=kotlin.Experimental"
 			freeCompilerArgs += "-Xopt-in=androidx.compose.foundation.ExperimentalFoundationApi"
+			freeCompilerArgs += "-Xopt-in=com.google.accompanist.pager.ExperimentalPagerApi"
 		}
 	}
 }

@@ -15,6 +15,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import ru.sibsutis.table.feature.timetable.ui.TimetableScreen
 import ru.sibsutis.table.features.mainbottomnavigationscreen.R
 import ru.sibsutis.table.features.teachers.listscreen.ui.TeachersListScreen
 import ru.sibsutis.table.navigation.navigator.BottomBarNavigator
@@ -79,7 +80,7 @@ object MainBottomNavigationScreen : MainBottomNavigationContent {
 
 				when (currentScreen) {
 					TimeTableContent.path -> {
-						// TODO
+						TimetableScreen.route(group)()
 					}
 
 					TeachersContent.path  -> {

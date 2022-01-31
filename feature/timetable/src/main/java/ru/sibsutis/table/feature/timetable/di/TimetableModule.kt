@@ -1,5 +1,6 @@
 package ru.sibsutis.table.feature.timetable.di
 
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import ru.sibsutis.mockapiserver.changer.MOCK
 import ru.sibsutis.mockapiserver.changer.getRetrofit
@@ -11,6 +12,7 @@ import ru.sibsutis.table.feature.timetable.data.repository.TimetableRepositoryIm
 import ru.sibsutis.table.feature.timetable.domain.repository.TimetableRepository
 import ru.sibsutis.table.feature.timetable.domain.usecases.GetTimetableUseCase
 import ru.sibsutis.table.feature.timetable.domain.usecases.UpdateTimetableLocalStorageUseCase
+import ru.sibsutis.table.feature.timetable.presentation.TimetableViewModel
 
 val timetableModule = module {
 
@@ -22,4 +24,12 @@ val timetableModule = module {
 
 	factory { UpdateTimetableLocalStorageUseCase(repository = get()) }
 	factory { GetTimetableUseCase(repository = get()) }
+
+	viewModel { (group: String) ->
+		TimetableViewModel(
+			group = group,
+			getTimetableUseCase = get(),
+			updateTimetableLocalStorageUseCase = get()
+		).apply { initialize() }
+	}
 }

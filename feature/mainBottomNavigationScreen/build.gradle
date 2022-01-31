@@ -11,6 +11,7 @@ dependencies {
 
 	implementation project(":feature:settings")
 	implementation project(":feature:teachers:listScreen")
+	implementation project(":feature:timetable")
 	implementation project(":navigation")
 	implementation project(":shared:ui")
 }

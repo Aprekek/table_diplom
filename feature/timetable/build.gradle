@@ -6,12 +6,20 @@ apply from: "$rootDir/build_system/androidLibrary.gradle"
 dependencies {
 
 	implementation Dependencies.KOIN_CORE
-	implementation Dependencies.COMPOSE.MATERIAL
+	implementation Dependencies.LIFECYCLE_VIEWMODEL
 	implementation Dependencies.MOSHI
 	implementation Dependencies.RETROFIT
+	implementation Dependencies.COMPOSE.MATERIAL
+	implementation Dependencies.COMPOSE.KOIN
+	implementation Dependencies.COMPOSE.VIEWMODEL
+	implementation Dependencies.COMPOSE.PAGER
+	implementation Dependencies.COMPOSE.PAGER_INDICATORS
 
+	implementation project(':navigation')
 	implementation project(':mockApiServer')
 	implementation project(":network")
 	implementation project(":database")
 	implementation project(":shared:lesson")
+	implementation project(":shared:core")
+	implementation project(":shared:ui")
 }

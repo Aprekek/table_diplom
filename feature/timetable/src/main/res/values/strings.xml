@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="day_off">Сегодня выходной!</string>
+	<string name="lesson_time_period">%s-%s</string>
+
+	<string-array name="lesson_types">
+		<item>Лекция</item>
+		<item>Практика</item>
+	</string-array>
+
+	<string-array name="weeks">
+		<item>Первая</item>
+		<item>Вторая</item>
+	</string-array>
+
+	<string-array name="days">
+		<item>Пн</item>
+		<item>Вт</item>
+		<item>Ср</item>
+		<item>Чт</item>
+		<item>Пт</item>
+		<item>Сб</item>
+		<item>Вс</item>
+	</string-array>
+</resources>

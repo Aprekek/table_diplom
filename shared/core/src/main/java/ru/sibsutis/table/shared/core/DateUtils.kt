@@ -15,13 +15,13 @@ object DateUtils {
 	private const val CALENDAR_DAY_DIFF = 2
 	private const val SUNDAY = 6
 
-	fun getWeekDates(weekType: Int): List<String> {
+	fun getWeekDates(weekType: Int, pattern: String = "dd.MM"): List<String> {
 		val calendar = Calendar.getInstance()
 		if (weekType != getCurrentWeek()) {
 			calendar.add(Calendar.WEEK_OF_YEAR, 1)
 		}
 
-		val dateFormatter = SimpleDateFormat("dd.MM.yy", Locale("rus"))
+		val dateFormatter = SimpleDateFormat(pattern, Locale("rus"))
 
 		val dates = mutableListOf<String>()
 		for (day in Calendar.SUNDAY..Calendar.SATURDAY) {
