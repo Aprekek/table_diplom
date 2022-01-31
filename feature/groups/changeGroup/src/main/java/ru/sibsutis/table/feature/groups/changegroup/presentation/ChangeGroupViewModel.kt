@@ -4,8 +4,8 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import ru.sibsutis.table.feature.groups.changegroup.domain.usecase.AddGroupToRecentlyWatchedUseCase
-import ru.sibsutis.table.feature.groups.changegroup.domain.usecase.GetRecentlyWatchedGroupsUseCase
+import ru.sibsutis.table.shared.group.domain.usecases.AddGroupToRecentlyWatchedUseCase
+import ru.sibsutis.table.shared.group.domain.usecases.GetRecentlyWatchedGroupsUseCase
 import ru.sibsutis.table.navigation.screens.changegroup.ChangeGroupNavigationRouter
 import ru.sibsutis.table.shared.group.domain.usecases.GetGroupsListUseCase
 import ru.sibsutis.table.shared.group.domain.usecases.IsGroupExistUseCase

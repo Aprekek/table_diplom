@@ -1,4 +1,4 @@
-package ru.sibsutis.table.feature.groups.changegroup.domain.entities
+package ru.sibsutis.table.shared.group.domain.entities
 
 data class RecentlyWatchedGroup(
 	val id: Int = 0,

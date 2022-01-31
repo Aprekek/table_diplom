@@ -1,4 +1,4 @@
-package ru.sibsutis.table.feature.groups.changegroup.domain.repository
+package ru.sibsutis.table.shared.group.domain.repository
 
 interface RecentlyWatchedGroupsRepository {
 
