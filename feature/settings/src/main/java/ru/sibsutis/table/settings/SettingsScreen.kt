@@ -122,8 +122,6 @@ object SettingsScreen : SettingsContent {
 		@DrawableRes image: Int? = null,
 		onClick: () -> Unit
 	) {
-		val elevation = 1.dp
-
 		Column(modifier = modifier) {
 			Card(
 				modifier = Modifier
@@ -133,7 +131,6 @@ object SettingsScreen : SettingsContent {
 						indication = rememberRipple(),
 						onClick = onClick
 					),
-				elevation = elevation,
 				shape = RectangleShape,
 			) {
 				Box(
@@ -156,7 +153,7 @@ object SettingsScreen : SettingsContent {
 				}
 			}
 
-			Spacer(modifier = Modifier.height(elevation))
+			Spacer(modifier = Modifier.height(1.dp))
 		}
 	}
 
