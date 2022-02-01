@@ -5,10 +5,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Divider
+import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,6 +21,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import ru.sibsutis.table.feature.timetable.R
 import ru.sibsutis.table.feature.timetable.domain.entities.Lesson
+import ru.sibsutis.table.shared.themes.DiplomThemeMode
+import ru.sibsutis.table.shared.themes.lightColorTheme
 
 @Composable
 internal fun LessonCard(
@@ -27,7 +32,10 @@ internal fun LessonCard(
 ) {
 	val contentPadding = remember { 8.dp }
 
-	Surface(modifier = modifier.fillMaxWidth()) {
+	Surface(
+		modifier = modifier.fillMaxWidth(),
+		elevation = 1.dp
+	) {
 		Column {
 			Divider()
 			Column(
@@ -43,31 +51,31 @@ internal fun LessonCard(
 					text = lesson.name,
 					fontWeight = FontWeight.Bold
 				)
-				Text(
-					text = lesson.teacher,
-					color = Color.Gray
-				)
-				Text(
-					text = localizedTypes[lesson.type.value],
-					color = Color.DarkGray,
-					modifier = Modifier.align(Alignment.End)
-				)
+
+				CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
+					Text(text = lesson.teacher)
+					Text(
+						text = localizedTypes[lesson.type.value],
+						modifier = Modifier.align(Alignment.End)
+					)
+				}
 			}
 			Box(
 				modifier = Modifier
 					.fillMaxWidth()
 					.padding(bottom = contentPadding)
 			) {
-				Text(
-					text = lesson.address,
-					color = Color.DarkGray,
-					modifier = Modifier
-						.align(Alignment.CenterStart)
-						.padding(horizontal = contentPadding)
-				)
+				CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
+					Text(
+						text = lesson.address,
+						modifier = Modifier
+							.align(Alignment.CenterStart)
+							.padding(horizontal = contentPadding, vertical = 10.dp)
+					)
+				}
 				Surface(
-					shape = RoundedCornerShape(topStart = 15.dp, bottomStart = 15.dp),
-					color = Color.LightGray,
+					shape = RoundedCornerShape(topStart = 5.dp, bottomStart = 5.dp),
+					color = if (DiplomThemeMode.isDarkTheme()) Color.White else lightColorTheme.primary,
 					modifier = Modifier.align(Alignment.CenterEnd)
 				) {
 					Text(
@@ -75,6 +83,7 @@ internal fun LessonCard(
 							id = R.string.lesson_time_period,
 							formatArgs = arrayOf(lesson.startTime, lesson.endTime)
 						),
+						color = if (DiplomThemeMode.isDarkTheme()) Color.Black else Color.White,
 						modifier = Modifier.padding(
 							start = contentPadding,
 							top = 5.dp,
