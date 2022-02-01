@@ -6,4 +6,5 @@ apply from: "$rootDir/build_system/androidLibrary.gradle"
 dependencies {
 
 	implementation Dependencies.COMPOSE.MATERIAL
+	implementation Dependencies.COMPOSE.SYSTEM_UI_CONTROLLER
 }
