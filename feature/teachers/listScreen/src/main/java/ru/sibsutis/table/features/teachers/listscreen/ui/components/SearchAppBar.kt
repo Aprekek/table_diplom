@@ -28,6 +28,9 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ru.sibsutis.table.features.teachers.listscreen.R
+import ru.sibsutis.table.shared.themes.DiplomThemeMode
+import ru.sibsutis.table.shared.themes.darkColorTheme
+import ru.sibsutis.table.shared.themes.lightColorTheme
 
 @Composable
 fun SearchAppBar(
@@ -45,16 +48,17 @@ fun SearchAppBar(
 			.fillMaxWidth()
 			.height(56.dp),
 		elevation = AppBarDefaults.TopAppBarElevation,
-		color = MaterialTheme.colors.primary
+		color = if (DiplomThemeMode.isDarkTheme())
+			darkColorTheme.surface
+		else
+			lightColorTheme.primary
 	) {
 		TextField(
 			modifier = Modifier
 				.fillMaxWidth()
 				.focusRequester(focusRequester),
 			value = text,
-			onValueChange = {
-				onTextChange(it)
-			},
+			onValueChange = { onTextChange(it) },
 			placeholder = {
 				Text(
 					modifier = Modifier.alpha(ContentAlpha.medium),
@@ -62,21 +66,15 @@ fun SearchAppBar(
 					color = Color.White
 				)
 			},
-			textStyle = TextStyle(
-				fontSize = MaterialTheme.typography.subtitle1.fontSize
-			),
+			textStyle = TextStyle(fontSize = MaterialTheme.typography.subtitle1.fontSize),
 			singleLine = true,
 			leadingIcon = {
-				IconButton(
+				Icon(
 					modifier = Modifier.alpha(ContentAlpha.medium),
-					onClick = {}
-				) {
-					Icon(
-						imageVector = Icons.Default.Search,
-						contentDescription = null,
-						tint = Color.White
-					)
-				}
+					imageVector = Icons.Default.Search,
+					contentDescription = null,
+					tint = Color.White
+				)
 			},
 			trailingIcon = {
 				IconButton(
@@ -99,14 +97,15 @@ fun SearchAppBar(
 				imeAction = ImeAction.Search
 			),
 			keyboardActions = KeyboardActions(
-				onSearch = {
-					onSearchClicked(text)
-				}
+				onSearch = { onSearchClicked(text) }
 			),
 			colors = TextFieldDefaults.textFieldColors(
 				backgroundColor = Color.Transparent,
-				cursorColor = Color.White.copy(alpha = ContentAlpha.medium)
-			))
+				cursorColor = Color.White.copy(alpha = ContentAlpha.medium),
+				focusedIndicatorColor = Color.Transparent,
+				unfocusedIndicatorColor = Color.Transparent
+			)
+		)
 
 		LaunchedEffect(focusRequired) {
 			if (focusRequired) {
