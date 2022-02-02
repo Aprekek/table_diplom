@@ -2,16 +2,25 @@ package ru.sibsutis.table.shared.ui
 
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.selection.LocalTextSelectionColors
+import androidx.compose.foundation.text.selection.TextSelectionColors
 import androidx.compose.material.DropdownMenuItem
 import androidx.compose.material.ExposedDropdownMenuBox
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import ru.sibsutis.table.shared.themes.DiplomThemeMode
+import ru.sibsutis.table.shared.themes.blue700
+import ru.sibsutis.table.shared.themes.veryLightBlue
 
 @Composable
 fun EditTextDT(
@@ -24,18 +33,40 @@ fun EditTextDT(
 	suggestions: List<String>,
 	onSuggestionItemClick: (item: String) -> Unit
 ) {
+	val customTextSelectionColors = if (DiplomThemeMode.isDarkTheme()) {
+		TextSelectionColors(
+			handleColor = blue700,
+			backgroundColor = veryLightBlue
+		)
+	} else {
+		TextSelectionColors(
+			handleColor = Color.Gray,
+			backgroundColor = Color.LightGray
+		)
+	}
+
 	ExposedDropdownMenuBox(
-		modifier = modifier,
-		expanded = textFieldValue.text.isNotBlank(),
+		modifier = modifier.fillMaxWidth(),
+		expanded = false,
 		onExpandedChange = {}
 	) {
-		OutlinedTextField(
-			value = textFieldValue,
-			label = { Text(text = labelText) },
-			onValueChange = { onValueChange(it.text) },
-			modifier = Modifier.fillMaxWidth(),
-			keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done)
-		)
+		CompositionLocalProvider(LocalTextSelectionColors provides customTextSelectionColors) {
+			OutlinedTextField(
+				value = textFieldValue,
+				placeholder = { Text(text = labelText, color = Color.Gray) },
+				onValueChange = { onValueChange(it.text) },
+				modifier = Modifier.fillMaxWidth(),
+				keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+				shape = RoundedCornerShape(15.dp),
+				colors = TextFieldDefaults.textFieldColors(
+					textColor = Color.Black,
+					backgroundColor = if (DiplomThemeMode.isDarkTheme()) Color.LightGray else veryLightBlue,
+					cursorColor = if (DiplomThemeMode.isDarkTheme()) blue700 else Color.Gray,
+					focusedIndicatorColor = Color.White,
+					unfocusedIndicatorColor = Color.LightGray,
+				)
+			)
+		}
 
 		if (suggestions.isNotEmpty() && expanded) {
 			ExposedDropdownMenu(
