@@ -55,7 +55,7 @@ internal fun TimetableAppBar(
 			}
 
 			TabRow(
-				selectedTabIndex = pagerState.currentPage,
+				selectedTabIndex = day,
 				indicator = { tabPositions ->
 					TabRowDefaults.Indicator(
 						modifier = if (pagerState.pageCount > 0) Modifier.pagerTabIndicatorOffset(
@@ -67,7 +67,7 @@ internal fun TimetableAppBar(
 			) {
 				for (dayIndex in 0 until TimetableViewModel.TOTAL_DAYS) {
 					Tab(
-						selected = dayIndex == pagerState.currentPage,
+						selected = dayIndex == day,
 						onClick = {
 							coroutineScope.launch {
 								if (pagerState.pageCount > 0)

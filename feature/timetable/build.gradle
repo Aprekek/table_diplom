@@ -23,4 +23,5 @@ dependencies {
 	implementation project(":shared:core")
 	implementation project(":shared:ui")
 	implementation project(":shared:themes")
+	implementation project(":shared:interconnectors")
 }

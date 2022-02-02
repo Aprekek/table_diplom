@@ -9,12 +9,14 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import kotlinx.coroutines.launch
 import ru.sibsutis.table.feature.timetable.ui.TimetableScreen
 import ru.sibsutis.table.features.mainbottomnavigationscreen.R
 import ru.sibsutis.table.features.teachers.listscreen.ui.TeachersListScreen
@@ -25,6 +27,7 @@ import ru.sibsutis.table.navigation.screens.startinggroupmenu.StartingGroupMenuC
 import ru.sibsutis.table.navigation.screens.teachers.TeachersContent
 import ru.sibsutis.table.navigation.screens.timetable.TimeTableContent
 import ru.sibsutis.table.settings.SettingsScreen
+import ru.sibsutis.table.shared.interconnectors.BottomNavTimetableInterconnector
 import ru.sibsutis.table.shared.ui.BottomNavigationDt
 import ru.sibsutis.table.shared.ui.domain.BottomNavigationItemEntity
 
@@ -40,6 +43,7 @@ object MainBottomNavigationScreen : MainBottomNavigationContent {
 	@Composable
 	private fun Content(navController: NavController, group: String) {
 		val context = LocalContext.current
+		val coroutineScope = rememberCoroutineScope()
 		val bottomBarNavigator = rememberSaveable { BottomBarNavigator(TimeTableContent.path) }
 		val currentScreen by bottomBarNavigator.currentScreen.collectAsState()
 
@@ -68,7 +72,12 @@ object MainBottomNavigationScreen : MainBottomNavigationContent {
 				BottomNavigationDt(
 					selectedItem = currentScreen,
 					items = bottomNavigationItemEntities,
-					onItemClick = { bottomBarNavigator.navigateTo(it.route) }
+					onItemClick = {
+						bottomBarNavigator.navigateTo(it.route)
+						coroutineScope.launch {
+							BottomNavTimetableInterconnector.onReselect()
+						}
+					}
 				)
 			}
 		) {

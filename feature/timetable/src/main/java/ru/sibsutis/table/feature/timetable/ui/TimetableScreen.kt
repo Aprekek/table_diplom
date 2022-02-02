@@ -5,18 +5,23 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import com.google.accompanist.pager.rememberPagerState
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import org.koin.androidx.compose.viewModel
 import org.koin.core.parameter.parametersOf
 import ru.sibsutis.table.feature.timetable.R
 import ru.sibsutis.table.feature.timetable.presentation.TimetableState
 import ru.sibsutis.table.feature.timetable.presentation.TimetableViewModel
 import ru.sibsutis.table.navigation.screens.timetable.TimeTableContent
+import ru.sibsutis.table.shared.interconnectors.BottomNavTimetableInterconnector
 import ru.sibsutis.table.shared.ui.ErrorScreen
 import ru.sibsutis.table.shared.ui.LoadingScreen
 
@@ -45,6 +50,22 @@ object TimetableScreen : TimeTableContent {
 		}
 
 		val pagerState = rememberPagerState(initialPage = day)
+
+		LaunchedEffect(pagerState.currentPage) {
+			viewModel.onDaySelect(pagerState.currentPage)
+		}
+
+		LaunchedEffect(true) {
+			BottomNavTimetableInterconnector.reselected.onEach {
+				// If pager was initialized
+				if (pagerState.pageCount > 0) {
+					viewModel.setCurrentDays()
+					launch {
+						pagerState.animateScrollToPage(viewModel.currentDay)
+					}
+				}
+			}.launchIn(this)
+		}
 
 		Scaffold(
 			topBar = {

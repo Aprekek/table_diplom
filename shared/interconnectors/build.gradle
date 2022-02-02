@@ -1,3 +1,7 @@
 apply plugin: Plugins.KOTLIN
 
 apply from: "$rootDir/build_system/kotlinLibrary.gradle"
+
+dependencies {
+	implementation Dependencies.COROUTINES_CORE
+}
