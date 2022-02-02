@@ -58,8 +58,9 @@ object TimetableScreen : TimeTableContent {
 		LaunchedEffect(true) {
 			BottomNavTimetableInterconnector.reselected.onEach {
 				// If pager was initialized
-				if (pagerState.pageCount > 0) {
+				if (pagerState.pageCount > 0 && viewModel.reselectedValue != it) {
 					viewModel.setCurrentDays()
+					viewModel.reselectedValue = it
 					launch {
 						pagerState.animateScrollToPage(viewModel.currentDay)
 					}
