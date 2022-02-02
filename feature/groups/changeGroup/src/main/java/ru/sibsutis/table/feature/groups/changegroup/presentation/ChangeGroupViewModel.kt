@@ -60,11 +60,9 @@ class ChangeGroupViewModel(
 		coroutineScope {
 			launch {
 				addGroupToRecentlyWatchedUseCase(_selectedGroup.value)
-				Log.d("DT","recently added")
 			}
 			launch {
 				cleanLessonsStorageUseCase()
-				Log.d("DT","cleaned")
 			}
 		}
 		withContext(Dispatchers.Main) {
