@@ -10,4 +10,6 @@ dependencies {
 	implementation Dependencies.CORE
 	implementation Dependencies.COMPOSE.MATERIAL
 	implementation Dependencies.COMPOSE.TOOLING
+
+	implementation project(":shared:themes")
 }

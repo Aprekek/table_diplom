@@ -1,14 +1,19 @@
 package ru.sibsutis.table.shared.ui
 
+import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.Dp
 
 @Composable
 fun ToolbarDT(
@@ -16,6 +21,8 @@ fun ToolbarDT(
 	enableBackButton: Boolean = true,
 	enableSearchButton: Boolean = false,
 	onSearchButtonClick: () -> Unit = {},
+	elevation: Dp = AppBarDefaults.TopAppBarElevation,
+	backgroundColor: Color = MaterialTheme.colors.primarySurface,
 	onBackButtonClick: () -> Unit = {}
 ) {
 	TopAppBar(
@@ -42,6 +49,8 @@ fun ToolbarDT(
 					)
 				}
 			}
-		}
+		},
+		elevation = elevation,
+		backgroundColor = backgroundColor
 	)
 }
