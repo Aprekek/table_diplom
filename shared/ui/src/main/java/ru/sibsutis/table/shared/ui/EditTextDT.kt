@@ -3,6 +3,7 @@ package ru.sibsutis.table.shared.ui
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
 import androidx.compose.foundation.text.selection.TextSelectionColors
@@ -28,9 +29,10 @@ fun EditTextDT(
 	expanded: Boolean,
 	textFieldValue: TextFieldValue,
 	labelText: String,
-	onValueChange: (value: String) -> Unit,
+	onValueChange: (value: TextFieldValue) -> Unit,
 	onDismissRequest: () -> Unit,
 	suggestions: List<String>,
+	onKeyboardActionDone: () -> Unit,
 	onSuggestionItemClick: (item: String) -> Unit
 ) {
 	val customTextSelectionColors = if (DiplomThemeMode.isDarkTheme()) {
@@ -54,9 +56,12 @@ fun EditTextDT(
 			OutlinedTextField(
 				value = textFieldValue,
 				placeholder = { Text(text = labelText, color = Color.Gray) },
-				onValueChange = { onValueChange(it.text) },
+				onValueChange = { onValueChange(it) },
 				modifier = Modifier.fillMaxWidth(),
 				keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+				keyboardActions = KeyboardActions(onDone = {
+					onKeyboardActionDone()
+				}),
 				shape = RoundedCornerShape(15.dp),
 				colors = TextFieldDefaults.textFieldColors(
 					textColor = Color.Black,

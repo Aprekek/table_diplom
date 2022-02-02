@@ -12,8 +12,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.TextFieldValue
@@ -49,6 +51,7 @@ object ChangeGroupScreen : ChangeGroupNavigationContent {
 	@Composable
 	private fun Content(navController: NavController, currentActiveGroup: String) {
 		val context = LocalContext.current
+		val focusManager = LocalFocusManager.current
 		val viewModel by viewModel<ChangeGroupViewModel> {
 			parametersOf(currentActiveGroup)
 		}
@@ -58,7 +61,7 @@ object ChangeGroupScreen : ChangeGroupNavigationContent {
 		val selectedGroup by viewModel.selectedGroup.collectAsState()
 		val recentlyWatchedGroups by viewModel.recentlyWatchedGroups.collectAsState()
 
-		val textFieldValue by remember(selectedGroup) {
+		var textFieldValue by remember(selectedGroup) {
 			mutableStateOf(
 				TextFieldValue(
 					text = selectedGroup,
@@ -119,8 +122,15 @@ object ChangeGroupScreen : ChangeGroupNavigationContent {
 						state = state,
 						textFieldValue = textFieldValue,
 						suggests = suggests,
-						recentlyWatchedGroups = recentlyWatchedGroups
-					)
+						recentlyWatchedGroups = recentlyWatchedGroups,
+						onKeyboardActionDone = {
+							focusManager.clearFocus()
+							viewModel.onDismissAction()
+						}
+					) {
+						viewModel.onGroupChange(it.text)
+						textFieldValue = it
+					}
 				}
 			}
 		}

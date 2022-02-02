@@ -33,7 +33,9 @@ internal fun MainContent(
 	state: GroupMenuScreenState,
 	textFieldValue: TextFieldValue,
 	suggests: List<Group>,
-	recentlyWatchedGroups: List<String>
+	recentlyWatchedGroups: List<String>,
+	onKeyboardActionDone: () -> Unit,
+	onEditTextValueChange: (TextFieldValue) -> Unit
 ) {
 	constraintLayoutScope.apply {
 
@@ -64,10 +66,11 @@ internal fun MainContent(
 						expanded = state.isSuggestionsExpanded,
 						textFieldValue = textFieldValue,
 						labelText = stringResource(id = R.string.group),
-						onValueChange = { viewModel.onGroupChange(it) },
+						onValueChange = { onEditTextValueChange(it) },
 						suggestions = suggests.getNames(),
 						onSuggestionItemClick = { viewModel.onSuggestionItemSelect(it) },
 						onDismissRequest = { viewModel.onDismissAction() },
+						onKeyboardActionDone = { onKeyboardActionDone() }
 					)
 				}
 				Divider()
