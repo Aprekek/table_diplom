@@ -18,9 +18,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.TextFieldValue
@@ -52,7 +54,7 @@ object StartingGroupMenuScreen : StartingGroupMenuContent {
 	@Composable
 	private fun Content(navController: NavController) {
 		val context = LocalContext.current
-
+		val focusManager = LocalFocusManager.current
 		val viewModel by viewModel<StartingScreenViewModel>()
 
 		LaunchedEffect(navController) {
@@ -67,7 +69,7 @@ object StartingGroupMenuScreen : StartingGroupMenuContent {
 		val list by viewModel.suggestedGroups.collectAsState()
 		val selectedGroup by viewModel.selectedGroup.collectAsState()
 
-		val textFieldValue by remember(selectedGroup) {
+		var textFieldValue by remember(selectedGroup) {
 			mutableStateOf(
 				TextFieldValue(
 					text = selectedGroup,
@@ -107,10 +109,17 @@ object StartingGroupMenuScreen : StartingGroupMenuContent {
 						expanded = state.isSuggestionsExpanded,
 						textFieldValue = textFieldValue,
 						labelText = stringResource(id = R.string.group),
-						onValueChange = { viewModel.onGroupChange(it) },
+						onValueChange = {
+							viewModel.onGroupChange(it.text)
+							textFieldValue = it
+						},
 						suggestions = list.getNames(),
 						onSuggestionItemClick = { viewModel.onSuggestionItemSelect(it) },
-						onDismissRequest = { viewModel.onDismissAction() }
+						onDismissRequest = { viewModel.onDismissAction() },
+						onKeyboardActionDone = {
+							focusManager.clearFocus()
+							viewModel.onDismissAction()
+						}
 					)
 
 					Spacer(modifier = Modifier.height(15.dp))
