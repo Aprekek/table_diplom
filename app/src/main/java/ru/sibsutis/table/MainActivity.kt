@@ -16,6 +16,7 @@ import ru.sibsutis.table.shared.themes.ThemeModes
 class MainActivity : AppCompatActivity() {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
+		setTheme(R.style.Theme_Table)
 		super.onCreate(savedInstanceState)
 
 		restoreTheme()
