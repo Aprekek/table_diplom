@@ -4,6 +4,7 @@ import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -36,16 +37,19 @@ internal fun RecentlyWatchedGroupsContent(
 					width = Dimension.fillToConstraints
 					height = Dimension.fillToConstraints
 				}
+				.padding(top = 25.dp)
 				.verticalScroll(ScrollState(0))
 		) {
 			Text(
 				text = stringResource(R.string.recently_watched_groups),
 				fontSize = 16.sp,
-				modifier = Modifier.padding(start = 15.dp, top = 25.dp, bottom = 10.dp)
+				modifier = Modifier.padding(start = 15.dp, bottom = 10.dp)
 			)
 
-			recentlyWatchedGroups.forEach { text ->
+			recentlyWatchedGroups.forEachIndexed { index, text ->
 				RecentlyWatchedItem(text = text, onClick = { onRecentlyWatchedItemClick(it) })
+				if (index == recentlyWatchedGroups.lastIndex)
+					Divider()
 			}
 		}
 	}
