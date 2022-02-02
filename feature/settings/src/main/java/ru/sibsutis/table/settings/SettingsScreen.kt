@@ -27,6 +27,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -41,12 +42,15 @@ import org.koin.core.parameter.parametersOf
 import org.koin.java.KoinJavaComponent.get
 import ru.sibsutis.table.navigation.screens.settings.SettingsContent
 import ru.sibsutis.table.navigation.screens.settings.SettingsRouter
+import ru.sibsutis.table.shared.themes.DiplomThemeMode
+import ru.sibsutis.table.shared.themes.ThemeModes
 import ru.sibsutis.table.shared.themes.blue700
 import ru.sibsutis.table.shared.ui.ToolbarDT
 
 object SettingsScreen : SettingsContent {
 
 	private data class ThemeData(
+		val mode: ThemeModes,
 		val title: String,
 		@DrawableRes val icon: Int
 	)
@@ -68,9 +72,9 @@ object SettingsScreen : SettingsContent {
 
 		if (showThemeDialog) {
 			Dialog(onDismissRequest = { showThemeDialog = false }) {
-				ThemeSettingsList(stringResource(id = R.string.light_theme)) {
+				ThemeSettingsList(DiplomThemeMode.mode) { newMode ->
+					DiplomThemeMode.mode = newMode
 					showThemeDialog = false
-					// TODO change theme mode
 				}
 			}
 		}
@@ -160,27 +164,30 @@ object SettingsScreen : SettingsContent {
 
 	@Composable
 	private fun ThemeSettingsList(
-		currentTheme: String,
-		onThemeSelectConfirmation: (theme: String) -> Unit
+		currentTheme: ThemeModes,
+		onThemeSelectConfirmation: (theme: ThemeModes) -> Unit
 	) {
 		val context = LocalContext.current
-		var selectedTheme by remember { mutableStateOf(currentTheme) }
 		val themeItems = remember {
 			listOf(
 				ThemeData(
+					mode = ThemeModes.LIGHT,
 					title = context.getString(R.string.light_theme),
 					icon = R.drawable.ic_light_mode
 				),
 				ThemeData(
+					mode = ThemeModes.DARK,
 					title = context.getString(R.string.dark_theme),
 					icon = R.drawable.ic_dark_mode
 				),
 				ThemeData(
+					mode = ThemeModes.SYSTEM,
 					title = context.getString(R.string.system_theme),
 					icon = R.drawable.ic_system_mode
 				)
 			)
 		}
+		var selectedTheme by rememberSaveable { mutableStateOf(currentTheme) }
 
 		Surface(shape = RoundedCornerShape(10.dp)) {
 			Column(modifier = Modifier.padding(vertical = 10.dp)) {
@@ -188,8 +195,8 @@ object SettingsScreen : SettingsContent {
 					ThemeSettingsListItem(
 						title = item.title,
 						icon = item.icon,
-						selected = selectedTheme == item.title
-					) { selectedTheme = item.title }
+						selected = selectedTheme == item.mode
+					) { selectedTheme = item.mode }
 				}
 
 				Text(

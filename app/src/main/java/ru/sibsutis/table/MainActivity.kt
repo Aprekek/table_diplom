@@ -8,17 +8,21 @@ import ru.sibsutis.table.navigation.GlobalController
 import ru.sibsutis.table.navigation.screens.mainbottomnavigation.MainBottomNavigationContent
 import ru.sibsutis.table.navigation.screens.startinggroupmenu.StartingGroupMenuContent
 import ru.sibsutis.table.preferences.preferences.GroupPreferences
+import ru.sibsutis.table.preferences.preferences.ThemeModePreferences
 import ru.sibsutis.table.shared.themes.DiplomTableTheme
+import ru.sibsutis.table.shared.themes.DiplomThemeMode
+import ru.sibsutis.table.shared.themes.ThemeModes
 
 class MainActivity : AppCompatActivity() {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
+		restoreTheme()
 		val currentGroup = getSavedGroup()
 
 		setContent {
-			DiplomTableTheme {
+			DiplomTableTheme(DiplomThemeMode.isDarkTheme()) {
 				GlobalController(
 					startDestination = getStartDestination(currentGroup),
 					currentGroup = currentGroup
@@ -39,4 +43,11 @@ class MainActivity : AppCompatActivity() {
 	}
 
 	private fun getSavedGroup() = get<GroupPreferences>().getGroup() ?: ""
+
+	private fun restoreTheme() {
+		val savedThemeMode = get<ThemeModePreferences>().getThemeMode()
+		DiplomThemeMode.mode = ThemeModes.values().find {
+			it.value == savedThemeMode
+		} ?: ThemeModes.SYSTEM
+	}
 }

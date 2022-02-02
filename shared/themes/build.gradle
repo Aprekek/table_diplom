@@ -5,6 +5,9 @@ apply from: "$rootDir/build_system/androidLibrary.gradle"
 
 dependencies {
 
+	implementation Dependencies.KOIN_CORE
 	implementation Dependencies.COMPOSE.MATERIAL
 	implementation Dependencies.COMPOSE.SYSTEM_UI_CONTROLLER
+
+	implementation project(":shared:preferences")
 }
