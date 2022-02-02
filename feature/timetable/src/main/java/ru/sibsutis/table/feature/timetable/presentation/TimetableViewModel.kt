@@ -30,9 +30,12 @@ class TimetableViewModel(
 	val state = _state.asStateFlow()
 
 	private var visitedWeeks = 0
-	private var _week = MutableStateFlow(DateUtils.getCurrentWeek())
+	val currentWeek = DateUtils.getCurrentWeek()
+	private var _week = MutableStateFlow(currentWeek)
 	val week = _week.asStateFlow()
-	private var _day = MutableStateFlow(DateUtils.getCurrentDay())
+
+	val currentDay = DateUtils.getCurrentDay()
+	private var _day = MutableStateFlow(currentDay)
 	val day = _day.asStateFlow()
 
 	private val firstWeekDates by lazy { DateUtils.getWeekDates(WeekType.FIRST.value) }
@@ -68,6 +71,11 @@ class TimetableViewModel(
 
 	fun onDaySelect(day: Int) {
 		_day.value = day
+	}
+
+	fun setCurrentDays() {
+		_week.value = currentWeek
+		_day.value = currentDay
 	}
 
 	private suspend fun updateLocalStorage() {
