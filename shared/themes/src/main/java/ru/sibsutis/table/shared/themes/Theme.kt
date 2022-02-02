@@ -7,16 +7,21 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import org.koin.java.KoinJavaComponent.get
+import ru.sibsutis.table.preferences.preferences.ThemeModePreferences
+
+enum class ThemeModes(val value: Int) {
+	LIGHT(0),
+	DARK(1),
+	SYSTEM(2)
+}
 
 @Composable
 fun DiplomTableTheme(
-	isDarkMode: Boolean = isSystemInDarkTheme(),
+	isDarkMode: Boolean,
 	content: @Composable () -> Unit
 ) {
 	val systemUiController = rememberSystemUiController()
-
-	//TODO check user preferences for the theme mode
-	DiplomThemeMode.isDarkMode = isDarkMode
 
 	val colors = if (isDarkMode) {
 		systemUiController.setStatusBarColor(color = grey4Dp)
@@ -33,8 +38,20 @@ fun DiplomTableTheme(
 
 object DiplomThemeMode {
 
-	var isDarkMode by mutableStateOf(false)
-	var isSystemMode by mutableStateOf(false)
+	private var isDarkMode by mutableStateOf(false)
+	private var isSystemMode by mutableStateOf(false)
+
+	var mode: ThemeModes = ThemeModes.SYSTEM
+		set(newMode) {
+			if (newMode == ThemeModes.SYSTEM) {
+				isSystemMode = true
+			} else {
+				isDarkMode = newMode == ThemeModes.DARK
+				isSystemMode = false
+			}
+			field = newMode
+			get<ThemeModePreferences>(ThemeModePreferences::class.java).saveTheme(newMode.value)
+		}
 
 	@Composable
 	fun isDarkTheme() = if (isSystemMode) isSystemInDarkTheme() else isDarkMode
