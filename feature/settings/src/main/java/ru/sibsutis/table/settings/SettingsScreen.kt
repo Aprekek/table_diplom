@@ -18,6 +18,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.RadioButton
+import androidx.compose.material.RadioButtonDefaults
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -29,7 +30,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -41,6 +41,7 @@ import org.koin.core.parameter.parametersOf
 import org.koin.java.KoinJavaComponent.get
 import ru.sibsutis.table.navigation.screens.settings.SettingsContent
 import ru.sibsutis.table.navigation.screens.settings.SettingsRouter
+import ru.sibsutis.table.shared.themes.blue700
 import ru.sibsutis.table.shared.ui.ToolbarDT
 
 object SettingsScreen : SettingsContent {
@@ -193,7 +194,7 @@ object SettingsScreen : SettingsContent {
 
 				Text(
 					text = stringResource(R.string.confirm),
-					color = Color.Blue,
+					color = blue700,
 					modifier = Modifier
 						.align(Alignment.End)
 						.padding(top = 10.dp, end = 15.dp)
@@ -219,6 +220,7 @@ object SettingsScreen : SettingsContent {
 			RadioButton(
 				selected = selected,
 				onClick = { onSelect(title) },
+				colors = RadioButtonDefaults.colors(),
 				modifier = Modifier.align(Alignment.CenterVertically)
 			)
 
