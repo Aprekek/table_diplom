@@ -22,4 +22,5 @@ dependencies {
 	implementation project(':shared:lesson:domain')
 	implementation project(":shared:core")
 	implementation project(":shared:ui")
+	implementation project(":shared:themes")
 }

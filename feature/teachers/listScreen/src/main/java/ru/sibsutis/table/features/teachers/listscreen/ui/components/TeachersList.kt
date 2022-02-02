@@ -34,6 +34,9 @@ fun TeachersList(
 			}
 			items(count = teacherList.size) { teacherIndex ->
 				val teacher = teacherList[teacherIndex]
+
+				if (teacherIndex == 0)
+					Divider()
 				TeacherItem(
 					teacher = teacher,
 					onTeacherClick = onTeacherClick

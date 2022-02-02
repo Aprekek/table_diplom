@@ -2,8 +2,11 @@ package ru.sibsutis.table.feature.timetable.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.AppBarDefaults
+import androidx.compose.material.Surface
 import androidx.compose.material.Tab
 import androidx.compose.material.TabRow
 import androidx.compose.material.TabRowDefaults
@@ -32,50 +35,55 @@ internal fun TimetableAppBar(
 ) {
 	val coroutineScope = rememberCoroutineScope()
 
-	Column {
-		TabRow(selectedTabIndex = week) {
-			for (weekIndex in 0 until TimetableViewModel.TOTAL_WEEKS) {
-				Tab(
-					selected = weekIndex == week,
-					onClick = { onWeekSelected(weekIndex) },
-				) {
-					Text(
-						text = weeksNames[weekIndex],
-						modifier = Modifier.padding(vertical = 15.dp)
-					)
+	Surface(
+		modifier = Modifier.fillMaxWidth(),
+		elevation = AppBarDefaults.TopAppBarElevation
+	) {
+		Column {
+			TabRow(selectedTabIndex = week) {
+				for (weekIndex in 0 until TimetableViewModel.TOTAL_WEEKS) {
+					Tab(
+						selected = weekIndex == week,
+						onClick = { onWeekSelected(weekIndex) },
+					) {
+						Text(
+							text = weeksNames[weekIndex],
+							modifier = Modifier.padding(vertical = 15.dp)
+						)
+					}
 				}
 			}
-		}
 
-		TabRow(
-			selectedTabIndex = pagerState.currentPage,
-			indicator = { tabPositions ->
-				TabRowDefaults.Indicator(
-					modifier = if (pagerState.pageCount > 0) Modifier.pagerTabIndicatorOffset(
-						pagerState,
-						tabPositions
-					) else Modifier.tabIndicatorOffset(tabPositions[day])
-				)
-			}
-		) {
-			for (dayIndex in 0 until TimetableViewModel.TOTAL_DAYS) {
-				Tab(
-					selected = dayIndex == pagerState.currentPage,
-					onClick = {
-						coroutineScope.launch {
-							if (pagerState.pageCount > 0)
-								pagerState.animateScrollToPage(dayIndex)
-						}
-						onDaySelected(dayIndex)
-					},
-				) {
-					Column(
-						modifier = Modifier.padding(vertical = 5.dp),
-						horizontalAlignment = Alignment.CenterHorizontally
+			TabRow(
+				selectedTabIndex = pagerState.currentPage,
+				indicator = { tabPositions ->
+					TabRowDefaults.Indicator(
+						modifier = if (pagerState.pageCount > 0) Modifier.pagerTabIndicatorOffset(
+							pagerState,
+							tabPositions
+						) else Modifier.tabIndicatorOffset(tabPositions[day])
+					)
+				}
+			) {
+				for (dayIndex in 0 until TimetableViewModel.TOTAL_DAYS) {
+					Tab(
+						selected = dayIndex == pagerState.currentPage,
+						onClick = {
+							coroutineScope.launch {
+								if (pagerState.pageCount > 0)
+									pagerState.animateScrollToPage(dayIndex)
+							}
+							onDaySelected(dayIndex)
+						},
 					) {
-						Text(text = dayNames[dayIndex])
-						Spacer(modifier = Modifier.height(3.dp))
-						Text(text = dates[dayIndex])
+						Column(
+							modifier = Modifier.padding(vertical = 5.dp),
+							horizontalAlignment = Alignment.CenterHorizontally
+						) {
+							Text(text = dayNames[dayIndex])
+							Spacer(modifier = Modifier.height(3.dp))
+							Text(text = dates[dayIndex])
+						}
 					}
 				}
 			}

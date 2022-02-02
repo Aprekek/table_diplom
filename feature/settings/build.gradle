@@ -11,4 +11,5 @@ dependencies {
 
 	implementation project(":navigation")
 	implementation project(":shared:ui")
+	implementation project(":shared:themes")
 }

@@ -26,17 +26,18 @@ ext.Dependencies = [
 	APP_COMPAT             : "androidx.appcompat:appcompat:${Versions.APP_COMPAT}",
 
 	COMPOSE                : [
-		RUNTIME          : "androidx.compose.runtime:runtime:${Versions.COMPOSE_COMMON}",
-		ACTIVITY         : "androidx.activity:activity-compose:${Versions.COMPOSE_ACTIVITY}",
-		MATERIAL         : "androidx.compose.material:material:${Versions.COMPOSE_COMMON}",
-		CONSTRAINT_LAYOUT: "androidx.constraintlayout:constraintlayout-compose:${Versions.COMPOSE_CONSTRAINT_LAYOUT}",
-		KOIN             : "io.insert-koin:koin-androidx-compose:${Versions.KOIN}",
-		ANIMATIONS       : "androidx.compose.animation:animation:${Versions.COMPOSE_COMMON}",
-		TOOLING          : "androidx.compose.ui:ui-tooling:${Versions.COMPOSE_COMMON}",
-		VIEWMODEL        : "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.COMPOSE_VIEWMODEL}",
-		NAVIGATION       : "androidx.navigation:navigation-compose:${Versions.COMPOSE_NAVIGATION}",
-		PAGER_INDICATORS : "com.google.accompanist:accompanist-pager-indicators:${Versions.ACCOMPANIST}",
-		PAGER            : "com.google.accompanist:accompanist-pager:${Versions.ACCOMPANIST}",
+		RUNTIME             : "androidx.compose.runtime:runtime:${Versions.COMPOSE_COMMON}",
+		ACTIVITY            : "androidx.activity:activity-compose:${Versions.COMPOSE_ACTIVITY}",
+		MATERIAL            : "androidx.compose.material:material:${Versions.COMPOSE_COMMON}",
+		CONSTRAINT_LAYOUT   : "androidx.constraintlayout:constraintlayout-compose:${Versions.COMPOSE_CONSTRAINT_LAYOUT}",
+		KOIN                : "io.insert-koin:koin-androidx-compose:${Versions.KOIN}",
+		ANIMATIONS          : "androidx.compose.animation:animation:${Versions.COMPOSE_COMMON}",
+		TOOLING             : "androidx.compose.ui:ui-tooling:${Versions.COMPOSE_COMMON}",
+		VIEWMODEL           : "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.COMPOSE_VIEWMODEL}",
+		NAVIGATION          : "androidx.navigation:navigation-compose:${Versions.COMPOSE_NAVIGATION}",
+		PAGER_INDICATORS    : "com.google.accompanist:accompanist-pager-indicators:${Versions.ACCOMPANIST}",
+		PAGER               : "com.google.accompanist:accompanist-pager:${Versions.ACCOMPANIST}",
+		SYSTEM_UI_CONTROLLER: "com.google.accompanist:accompanist-systemuicontroller:${Versions.ACCOMPANIST}"
 	],
 
 	GLIDE                  : "com.github.skydoves:landscapist-glide:${Versions.GLIDE}"

@@ -22,6 +22,7 @@ dependencies {
 	implementation project(":shared:preferences")
 	implementation project(":shared:group:domain")
 	implementation project(":shared:group:data")
+	implementation project(":shared:themes")
 	implementation project(':feature:groups:startingScreen')
 	implementation project(':feature:groups:changeGroup')
 	implementation project(':feature:mainBottomNavigationScreen')

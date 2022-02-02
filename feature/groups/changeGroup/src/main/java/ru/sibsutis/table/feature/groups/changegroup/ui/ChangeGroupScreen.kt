@@ -17,6 +17,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
@@ -30,6 +31,9 @@ import ru.sibsutis.table.navigation.screens.changegroup.ChangeGroupNavigationCon
 import ru.sibsutis.table.navigation.screens.changegroup.ChangeGroupNavigationContent.Companion.path
 import ru.sibsutis.table.navigation.screens.changegroup.ChangeGroupNavigationRouter
 import ru.sibsutis.table.shared.group.presentation.presentation.GroupMenuScreenState
+import ru.sibsutis.table.shared.themes.DiplomThemeMode
+import ru.sibsutis.table.shared.themes.grey4Dp
+import ru.sibsutis.table.shared.themes.lightColorTheme
 import ru.sibsutis.table.shared.ui.LoadingScreen
 import ru.sibsutis.table.shared.ui.ToolbarDT
 
@@ -81,7 +85,11 @@ object ChangeGroupScreen : ChangeGroupNavigationContent {
 		Scaffold(
 			modifier = Modifier.fillMaxSize(),
 			topBar = {
-				ToolbarDT(title = stringResource(id = R.string.sibsutis_title)) {
+				ToolbarDT(
+					title = stringResource(id = R.string.sibsutis_title),
+					elevation = 0.dp,
+					backgroundColor = if (DiplomThemeMode.isDarkTheme()) grey4Dp else lightColorTheme.primary
+				) {
 					navController.popBackStack()
 				}
 			}

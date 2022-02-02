@@ -8,6 +8,7 @@ import ru.sibsutis.table.navigation.GlobalController
 import ru.sibsutis.table.navigation.screens.mainbottomnavigation.MainBottomNavigationContent
 import ru.sibsutis.table.navigation.screens.startinggroupmenu.StartingGroupMenuContent
 import ru.sibsutis.table.preferences.preferences.GroupPreferences
+import ru.sibsutis.table.shared.themes.DiplomTableTheme
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,10 +18,12 @@ class MainActivity : AppCompatActivity() {
 		val currentGroup = getSavedGroup()
 
 		setContent {
-			GlobalController(
-				startDestination = getStartDestination(currentGroup),
-				currentGroup = currentGroup
-			)
+			DiplomTableTheme {
+				GlobalController(
+					startDestination = getStartDestination(currentGroup),
+					currentGroup = currentGroup
+				)
+			}
 		}
 	}
 
