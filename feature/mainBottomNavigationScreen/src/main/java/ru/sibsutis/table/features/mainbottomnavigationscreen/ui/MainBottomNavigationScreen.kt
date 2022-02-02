@@ -72,11 +72,13 @@ object MainBottomNavigationScreen : MainBottomNavigationContent {
 				BottomNavigationDt(
 					selectedItem = currentScreen,
 					items = bottomNavigationItemEntities,
-					onItemClick = {
-						bottomBarNavigator.navigateTo(it.route)
-						coroutineScope.launch {
-							BottomNavTimetableInterconnector.onReselect()
+					onItemClick = { newDest ->
+						if ((newDest.route == currentScreen) && (currentScreen == TimeTableContent.path)) {
+							coroutineScope.launch {
+								BottomNavTimetableInterconnector.onReselect()
+							}
 						}
+						bottomBarNavigator.navigateTo(newDest.route)
 					}
 				)
 			}

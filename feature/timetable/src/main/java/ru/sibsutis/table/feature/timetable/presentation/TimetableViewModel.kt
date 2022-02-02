@@ -41,6 +41,8 @@ class TimetableViewModel(
 	private val firstWeekDates by lazy { DateUtils.getWeekDates(WeekType.FIRST.value) }
 	private val secondWeekDates by lazy { DateUtils.getWeekDates(WeekType.SECOND.value) }
 
+	var reselectedValue: Int = 0
+
 	fun getDates(): List<String> {
 		return if (week.value == WeekType.FIRST.value)
 			firstWeekDates
