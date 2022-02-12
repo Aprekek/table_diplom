@@ -1,10 +1,10 @@
 ext.Versions = [
 	KOTLIN                   : "1.6.10",
 	COROUTINES               : "1.6.0",
-	GRADLE                   : '7.1.0',
+	GRADLE                   : '7.1.1',
 	CORE                     : "1.7.0",
 	APP_COMPAT               : "1.4.1",
-	LIFECYCLE_VIEWMODEL      : "2.4.0",
+	LIFECYCLE_VIEWMODEL      : "2.4.1",
 	ROOM                     : "2.4.1",
 	KOIN                     : "3.1.5",
 	RETROFIT                 : "2.9.0",
@@ -14,10 +14,10 @@ ext.Versions = [
 	MATERIAL                 : "1.5.0",
 	MOSHI                    : "1.13.0",
 	COMPOSE_ACTIVITY         : "1.4.0",
-	COMPOSE_COMMON           : "1.1.0-rc03",
+	COMPOSE_COMMON           : "1.1.0",
 	COMPOSE_CONSTRAINT_LAYOUT: "1.0.0",
 	COMPOSE_VIEWMODEL        : "2.4.0",
-	COMPOSE_NAVIGATION       : "2.4.0",
-	ACCOMPANIST              : "0.24.0-alpha",
+	COMPOSE_NAVIGATION       : "2.4.1",
+	ACCOMPANIST              : "0.24.2-alpha",
 	GLIDE                    : "1.4.5"
 ]
