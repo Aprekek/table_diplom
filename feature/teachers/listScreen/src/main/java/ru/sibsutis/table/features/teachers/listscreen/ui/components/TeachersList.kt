@@ -1,6 +1,5 @@
 package ru.sibsutis.table.features.teachers.listscreen.ui.components
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -10,7 +9,6 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.Modifier
 import ru.sibsutis.table.features.teachers.listscreen.domain.entity.Teacher
 
-@ExperimentalFoundationApi
 @Composable
 fun TeachersList(
 	modifier: Modifier = Modifier,

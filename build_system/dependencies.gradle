@@ -37,7 +37,9 @@ ext.Dependencies = [
 		NAVIGATION          : "androidx.navigation:navigation-compose:${Versions.COMPOSE_NAVIGATION}",
 		PAGER_INDICATORS    : "com.google.accompanist:accompanist-pager-indicators:${Versions.ACCOMPANIST}",
 		PAGER               : "com.google.accompanist:accompanist-pager:${Versions.ACCOMPANIST}",
-		SYSTEM_UI_CONTROLLER: "com.google.accompanist:accompanist-systemuicontroller:${Versions.ACCOMPANIST}"
+		SYSTEM_UI_CONTROLLER: "com.google.accompanist:accompanist-systemuicontroller:${Versions.ACCOMPANIST}",
+		FOUNDATION          : "androidx.compose.foundation:foundation:${Versions.COMPOSE_COMMON}",
+		FOUNDATION_LAYOUT   : "androidx.compose.foundation:foundation-layout:${Versions.COMPOSE_COMMON}"
 	],
 
 	GLIDE                  : "com.github.skydoves:landscapist-glide:${Versions.GLIDE}"
