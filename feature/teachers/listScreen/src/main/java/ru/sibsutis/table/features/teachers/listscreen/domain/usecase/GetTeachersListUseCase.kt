@@ -7,5 +7,4 @@ class GetTeachersListUseCase(
 ) {
 
 	operator fun invoke(searchText: String = "") = repository.getTeachersList(searchText)
-
 }

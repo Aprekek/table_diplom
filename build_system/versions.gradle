@@ -14,10 +14,10 @@ ext.Versions = [
 	MATERIAL                 : "1.5.0",
 	MOSHI                    : "1.13.0",
 	COMPOSE_ACTIVITY         : "1.4.0",
-	COMPOSE_COMMON           : "1.1.0",
+	COMPOSE_COMMON           : "1.1.1",
 	COMPOSE_CONSTRAINT_LAYOUT: "1.0.0",
 	COMPOSE_VIEWMODEL        : "2.4.0",
-	COMPOSE_NAVIGATION       : "2.4.1",
-	ACCOMPANIST              : "0.24.1-alpha",
-	GLIDE                    : "1.4.5"
+	COMPOSE_NAVIGATION       : "2.4.2",
+	ACCOMPANIST              : "0.23.1",
+	GLIDE                    : "1.5.1"
 ]
